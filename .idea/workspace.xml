@@ -11,9 +11,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f02bc179-ecd7-44ac-aa38-76454d17a5a1" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/public/assets/main/style.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.env" beforeDir="false" afterPath="$PROJECT_DIR$/.env" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/quizotopia.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/quizotopia.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/images/logo.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/bundles.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/bundles.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/migrations/Version20201104171758.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/migrations/Version20201105182044.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/migrations/Version20201106073912.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/symfony.lock" beforeDir="false" afterPath="$PROJECT_DIR$/symfony.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/base.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/registration/register.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/registration/register.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/security/login.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/security/login.html.twig" afterDir="false" />
@@ -136,6 +144,8 @@
       <path value="$PROJECT_DIR$/vendor/symfony/property-info" />
       <path value="$PROJECT_DIR$/vendor/symfony/security-http" />
       <path value="$PROJECT_DIR$/vendor/symfony/serializer" />
+      <path value="$PROJECT_DIR$/vendor/symfonycasts/reset-password-bundle" />
+      <path value="$PROJECT_DIR$/vendor/symfony/google-mailer" />
     </include_path>
   </component>
   <component name="ProjectId" id="1jjIewlsU1bp0gykcSynsIarFDL" />
@@ -173,7 +183,8 @@
       <workItem from="1604571328268" duration="12131000" />
       <workItem from="1604600009668" duration="3392000" />
       <workItem from="1604649520327" duration="2638000" />
-      <workItem from="1604652199954" duration="4301000" />
+      <workItem from="1604652199954" duration="22095000" />
+      <workItem from="1604684658751" duration="288000" />
     </task>
     <servers />
   </component>
@@ -193,10 +204,10 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="552" y="166" key="#Plugins" timestamp="1604652268428">
+    <state x="552" y="166" key="#Plugins" timestamp="1604665912342">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
-    <state x="552" y="166" key="#Plugins/0.0.1920.1050@0.0.1920.1050" timestamp="1604652268428" />
+    <state x="552" y="166" key="#Plugins/0.0.1920.1050@0.0.1920.1050" timestamp="1604665912342" />
     <state x="859" y="390" width="775" height="506" key="#Vim_Emulation" timestamp="1604649702941">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
@@ -209,9 +220,9 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="874" y="138" key="NewPhpClassDialog/0.0.1536.824@0.0.1536.824" timestamp="1604512310598" />
-    <state x="623" y="227" width="672" height="678" key="search.everywhere.popup" timestamp="1604652272682">
+    <state x="623" y="227" width="672" height="678" key="search.everywhere.popup" timestamp="1604665905349">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
-    <state x="623" y="227" width="672" height="678" key="search.everywhere.popup/0.0.1920.1050@0.0.1920.1050" timestamp="1604652272682" />
+    <state x="623" y="227" width="672" height="678" key="search.everywhere.popup/0.0.1920.1050@0.0.1920.1050" timestamp="1604665905349" />
   </component>
 </project>
