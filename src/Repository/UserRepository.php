@@ -35,6 +35,12 @@ class UserRepository extends ServiceEntityRepository implements PasswordUpgrader
         $this->_em->persist($user);
         $this->_em->flush();
     }
+    public function findAllUsers()
+    {
+        $dql = 'SELECT u FROM App\Entity\User u';
+        $query = $this->getEntityManager()->createQuery($dql);
+        return $query;
+    }
 
     // /**
     //  * @return User[] Returns an array of User objects

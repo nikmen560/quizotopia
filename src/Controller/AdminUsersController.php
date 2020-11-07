@@ -17,7 +17,7 @@ class AdminUsersController extends AbstractController
      */
     public function index(UserRepository $userRepository,PaginatorInterface $paginator, Request $request): Response
     {
-        $users=$userRepository->findAll();
+        $users=$userRepository->findAllUsers();
         $result=$paginator->paginate(
             $users,
             $request->query->getInt('page',1),
