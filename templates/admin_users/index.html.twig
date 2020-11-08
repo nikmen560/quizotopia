@@ -12,9 +12,7 @@
         <thead>
         <tr>
             <th scope="col">{{ knp_pagination_sortable(users, 'id', 'u.id') }}</th>
-            <th scope="col">
-                <input type="checkbox"  id="select_all">
-            </th>
+
             <th scope="col"{% if users.isSorted('u.username') %} class="sorted"{% endif %}>
                 {{ knp_pagination_sortable(users, 'Users', 'u.username') }}</th>
             <th scope="col"{% if users.isSorted('u.email') %} class="sorted"{% endif %}>
@@ -24,30 +22,30 @@
             <th scope="col" {% if users.isSorted('u.status') %} class="sorted"{% endif %}>
                 {{ knp_pagination_sortable(users, 'Status', 'u.status') }}
             </th>
+            <th></th>
         </tr>
         </thead>
         <tbody>
         {% if users %}
-        {% for user in users %}
-            <tr>
-                <td scope="col">{{ user.id }}</td>
-                <td>
-                    <input type='checkbox' name='cheks[]' value="<?php echo $item->email;?>">
-                </td>
-                <td>{{ user.username }}</td>
-                <td>{{ user.email }}</td>
-                <td>{{ user.roles | json_encode }}</td>
-                {% if user.status %}
-                <td>active</td>
-                {% else %}
-                <td>not active</td>
-                {% endif %}
-            </tr>
-        {% endfor %}
+            {% for user in users %}
+                <tr>
+                    <td scope="col">{{ user.id }}</td>
+                    <td>{{ user.username }}</td>
+                    <td>{{ user.email }}</td>
+                    <td>{{ user.roles | json_encode }}</td>
+                    {% if user.status %}
+                        <td>active</td>
+                    {% else %}
+                        <td>not active</td>
+                    {% endif %}
+                    <td><a class="btn btn-danger" value="{{ user.id }}" href="{{ path('delete_user', {"id": user.id})  }};">Delete</a></td>
+                </tr>
+            {% endfor %}
         {% endif %}
         </tbody>
     </table>
     <div class="navigation">
         {{ knp_pagination_render(users) }}
     </div>
+
 {% endblock %}

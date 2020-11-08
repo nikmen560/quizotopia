@@ -10,29 +10,32 @@
                 <div class="form-login shadow-lg border" style="padding: 30px; margin: 30% auto">
 
                     <h1 class="h3 mb-3 font-weight-normal text-center">Reset password</h1>
-
+                    {{ form_start(resetForm) }}
                     <div class="input-group mt-4">
                         <span class="input-group-append bg-white border-left-0">
                                 <span class="input-group-text bg-transparent ">
-                                    <i class="icon fa fa-envelope p-1"></i>
+                                    <i class="icon fa fa-key p-1"></i>
                                 </span>
                              </span>
-                        {{ form_start(resetForm) }}
-                        {{ form_label(resetForm.plainPassword.first,null,{'attr': {
-                                'label': 'Enter Password',}}) }}
-                        {{ form_widget(resetForm.plainPassword.first,{'attr': {'class': 'form-control',
-                            }}) }}
-                        {{ form_label(resetForm.plainPassword.second,null,{'attr': {
-                                'label': 'Repeat Password',}}) }}
-                        {{ form_widget(resetForm.plainPassword.second,{'attr': {'class': 'form-control',
+                        {{ form_widget(resetForm.plainPassword.first,{'attr': {'class': 'form-control',  'placeholder': "New password"
                         }}) }}
-                    </div>
 
-                    <button class="btn btn-block btn-primary bg-info mt-3">Reset password</button>
+                        <div class="input-group mt-4">
+                        <span class="input-group-append bg-white border-left-0">
+                                <span class="input-group-text bg-transparent ">
+                                    <i class="icon fa fa-repeat p-1"></i>
+                                </span>
+                             </span>
+                            {{ form_widget(resetForm.plainPassword.second,{'attr': {'class': 'form-control',  'placeholder': "Repeat password"
+                            }}) }}
+                        </div>
+
+                        <button class="btn btn-block btn-primary bg-info mt-3">Reset password</button>
+
+                    </div>
+                    {{ form_end(resetForm) }}
 
                 </div>
-                        {{ form_end(resetForm) }}
-
             </div>
         </div>
     </div>
