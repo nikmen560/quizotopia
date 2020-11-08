@@ -11,14 +11,19 @@
     <table class="table" id="usertable">
         <thead>
         <tr>
-            <th scope="col">id</th>
+            <th scope="col">{{ knp_pagination_sortable(users, 'id', 'u.id') }}</th>
             <th scope="col">
                 <input type="checkbox"  id="select_all">
             </th>
-            <th scope="col">Username</th>
-            <th scope="col">Email</th>
+            <th scope="col"{% if users.isSorted('u.username') %} class="sorted"{% endif %}>
+                {{ knp_pagination_sortable(users, 'Users', 'u.username') }}</th>
+            <th scope="col"{% if users.isSorted('u.email') %} class="sorted"{% endif %}>
+                {{ knp_pagination_sortable(users, 'Email', 'u.email') }}
+            </th>
             <th scope="col">Roles</th>
-            <th scope="col">status</th>
+            <th scope="col" {% if users.isSorted('u.status') %} class="sorted"{% endif %}>
+                {{ knp_pagination_sortable(users, 'Status', 'u.status') }}
+            </th>
         </tr>
         </thead>
         <tbody>
