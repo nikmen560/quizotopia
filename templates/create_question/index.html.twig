@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello CreateQuestionController!{% endblock %}
+
+{% block content %}
+    <div>{{ form_start(CreateQuestionForm) }}
+
+
+        <button type="submit">Create Question</button>
+
+
+    {{ form_end(CreateQuestionForm) }}
+    </div>
+{% endblock %}
