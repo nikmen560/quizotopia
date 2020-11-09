@@ -1,0 +1,31 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello AdminQuestionsController!{% endblock %}
+
+{% block content %}
+
+    <table class="table" id="usertable">
+        <thead>
+        <tr>
+            <th scope="col">{{ knp_pagination_sortable(questions, 'id', 'q.id') }}</th>
+
+            <th scope="col"{% if questions.isSorted('q.content') %} class="sorted"{% endif %}>
+                {{ knp_pagination_sortable(questions, 'Question', 'q.content') }}</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% if questions %}
+            {% for question in questions %}
+                <tr>
+                    <td scope="col">{{ question.id }}</td>
+                    <td>{{ question.content }}</td>
+                </tr>
+            {% endfor %}
+        {% endif %}
+        </tbody>
+    </table>
+    <div class="navigation">
+        {{ knp_pagination_render(questions) }}
+    </div>
+
+{% endblock %}

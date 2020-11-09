@@ -19,6 +19,10 @@ class QuestionRepository extends ServiceEntityRepository
         parent::__construct($registry, Question::class);
     }
 
+    public function findAllQuestions()
+    {
+        return $this->getEntityManager()->createQuery('SELECT q FROM App\Entity\Question q');
+    }
     // /**
     //  * @return Question[] Returns an array of Question objects
     //  */
@@ -47,4 +51,5 @@ class QuestionRepository extends ServiceEntityRepository
         ;
     }
     */
+
 }

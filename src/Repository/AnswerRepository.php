@@ -19,6 +19,10 @@ class AnswerRepository extends ServiceEntityRepository
         parent::__construct($registry, Answer::class);
     }
 
+    public function findAllAnswers()
+    {
+        return $this->getEntityManager()->createQuery('SELECT a FROM App\Entity\Answer a');
+    }
     // /**
     //  * @return Answer[] Returns an array of Answer objects
     //  */
