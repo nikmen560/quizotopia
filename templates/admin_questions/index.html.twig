@@ -3,25 +3,18 @@
 {% block title %}Hello AdminQuestionsController!{% endblock %}
 
 {% block content %}
-    <div class="container-fluid">
-
-        <div class="md-form active-cyan-2 mb-3">
-            <input class="form-control" id="form-search" type="text" placeholder="Search"
-                   aria-label="Search">
-        </div>
-
+    <div class="container-fluid mt-4">
         <div class="w-50">
 
             <table class="table" id="table-questions">
                 <thead>
                 <tr>
-                    <th scope="col">{{ knp_pagination_sortable(questions, 'id', 'q.id') }}</th>
-
-                    <th scope="col"{% if questions.isSorted('q.content') %} class="sorted"{% endif %}>
-                        {{ knp_pagination_sortable(questions, 'Question', 'q.content') }}</th>
+                    <th >id</th>
+                    <th>question</th>
                 </tr>
                 </thead>
-                <tbody id="table">
+
+                <tbody>
                 {% if questions %}
                     {% for question in questions %}
                         <tr>
@@ -32,24 +25,27 @@
                 {% endif %}
                 </tbody>
             </table>
-            <div class="navigation">
-                {{ knp_pagination_render(questions) }}
-            </div>
 
         </div>
     </div>
 {% endblock %}
+{% block stylesheets %}
 
+    <link rel="stylesheet" href="{{ asset('/public/assets/framework/bootstrap/css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.22/css/dataTables.bootstrap4.min.css">
+
+{% endblock %}
 {% block javascripts %}
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <script src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.22/js/dataTables.bootstrap4.min.js"></script>
+
     <script>
-        $(document).ready(function(){
-            $("#form-search").on("keyup", function() {
-                let value = $(this).val().toLowerCase();
-                $("#table tr").filter(function() {
-                    $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1);
-                });
-            });
-        });
+        $(document).ready( function () {
+            $('#table-questions').DataTable();
+        } );
     </script>
+
 {% endblock %}

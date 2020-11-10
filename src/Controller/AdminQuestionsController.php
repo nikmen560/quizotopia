@@ -17,15 +17,9 @@ class AdminQuestionsController extends AbstractController
      */
     public function index(QuestionRepository $questionRepository, AnswerRepository $answerRepository, PaginatorInterface $paginator, Request $request): Response
     {
-        $questions = $questionRepository->findAllQuestions();
-        $answers = $answerRepository->findAllAnswers();
-        $result = $paginator->paginate(
-            $questions,
-            $request->query->getInt('page', 1),
-            $request->query->getInt('limit', 10)
-        );
+        $questions = $questionRepository->findAll();
         return $this->render('admin_questions/index.html.twig', [
-            'questions' => $result,
+            'questions' => $questions,
         ]);
     }
 }
