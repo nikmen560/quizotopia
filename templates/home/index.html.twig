@@ -2,9 +2,29 @@
 
 {% block title %}Main Page{% endblock %}
 
+{% block navigation %}
+{#    <nav class="navbar navbar-expand-lg navbar-light bg-light h4 justify-content-between">#}
+<nav class="navbar navbar-expand-lg h4 navbar-light bg-light justify-content-between">
+
+        <a class="navbar-brand" href="{{ path('mainpage') }}"><img src="/public/assets/images/logo1.png" alt=""></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="{{ path('mainpage') }}">Home<span class="sr-only">(current)</span></a>
+                </li>
+
+            </ul>
+            <a class="btn btn-outline-success my-2 my-sm-0 btn-lg" href="{{ path('app_login') }}">Sign in</a>
+        </div>
+    </nav>
+
+{% endblock %}
+
 {% block content %}
 
-    <button type = "button" onclick = "location.href='/register'" class="btn btn-primary btn-lg btn-block" > Sign up </button >
-    <button type = "button" onclick = "location.href='/login'" class="btn btn-secondary btn-lg btn-block" > Sign in </button >
 
 {% endblock %}

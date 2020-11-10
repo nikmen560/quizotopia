@@ -1,7 +1,35 @@
-{% extends 'base.html.twig' %}
+{% extends 'admin_base.twig' %}
 
 {% block title %}Hello AdminQuestionsController!{% endblock %}
 
+{% block navigation %}
+    <nav class="navbar navbar-expand-lg navbar-light bg-light h4">
+
+        <a class="navbar-brand" href="{{ path('mainpage') }}"><img src="/public/assets/images/logo1.png" alt=""></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ path('mainpage') }}">Admin Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ path('admin_users') }}">Users control</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link disabled" href="{{ path('mainpage') }}">Quizzes control</a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="{{ path('admin_questions') }}">Questions control</a>
+                </li>
+            </ul>
+            <a class="nav-link btn btn-secondary" href="{{ path('app_logout') }}">logout</a>
+        </div>
+    </nav>
+{% endblock %}
 {% block content %}
     <div class="container-fluid mt-4">
         <div class="w-50">
@@ -9,7 +37,7 @@
             <table class="table" id="table-questions">
                 <thead>
                 <tr>
-                    <th >id</th>
+                    <th>id</th>
                     <th>question</th>
                 </tr>
                 </thead>
@@ -43,9 +71,9 @@
     <script src="https://cdn.datatables.net/1.10.22/js/dataTables.bootstrap4.min.js"></script>
 
     <script>
-        $(document).ready( function () {
+        $(document).ready(function () {
             $('#table-questions').DataTable();
-        } );
+        });
     </script>
 
 {% endblock %}
