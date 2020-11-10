@@ -6,12 +6,13 @@
     <div class="container-fluid">
 
         <div class="md-form active-cyan-2 mb-3">
-            <input class="form-control" id="form-search" type="text" placeholder="Search" onkeyup="myFunction()" aria-label="Search">
+            <input class="form-control" id="form-search" type="text" placeholder="Search"
+                   aria-label="Search">
         </div>
 
         <div class="w-50">
 
-            <table class="table" id="usertable">
+            <table class="table" id="table-questions">
                 <thead>
                 <tr>
                     <th scope="col">{{ knp_pagination_sortable(questions, 'id', 'q.id') }}</th>
@@ -20,7 +21,7 @@
                         {{ knp_pagination_sortable(questions, 'Question', 'q.content') }}</th>
                 </tr>
                 </thead>
-                <tbody>
+                <tbody id="table">
                 {% if questions %}
                     {% for question in questions %}
                         <tr>
@@ -40,4 +41,15 @@
 {% endblock %}
 
 {% block javascripts %}
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $("#form-search").on("keyup", function() {
+                let value = $(this).val().toLowerCase();
+                $("#table tr").filter(function() {
+                    $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1);
+                });
+            });
+        });
+    </script>
 {% endblock %}
