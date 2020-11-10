@@ -3,29 +3,41 @@
 {% block title %}Hello AdminQuestionsController!{% endblock %}
 
 {% block content %}
+    <div class="container-fluid">
 
-    <table class="table" id="usertable">
-        <thead>
-        <tr>
-            <th scope="col">{{ knp_pagination_sortable(questions, 'id', 'q.id') }}</th>
+        <div class="md-form active-cyan-2 mb-3">
+            <input class="form-control" id="form-search" type="text" placeholder="Search" onkeyup="myFunction()" aria-label="Search">
+        </div>
 
-            <th scope="col"{% if questions.isSorted('q.content') %} class="sorted"{% endif %}>
-                {{ knp_pagination_sortable(questions, 'Question', 'q.content') }}</th>
-        </tr>
-        </thead>
-        <tbody>
-        {% if questions %}
-            {% for question in questions %}
+        <div class="w-50">
+
+            <table class="table" id="usertable">
+                <thead>
                 <tr>
-                    <td scope="col">{{ question.id }}</td>
-                    <td>{{ question.content }}</td>
-                </tr>
-            {% endfor %}
-        {% endif %}
-        </tbody>
-    </table>
-    <div class="navigation">
-        {{ knp_pagination_render(questions) }}
-    </div>
+                    <th scope="col">{{ knp_pagination_sortable(questions, 'id', 'q.id') }}</th>
 
+                    <th scope="col"{% if questions.isSorted('q.content') %} class="sorted"{% endif %}>
+                        {{ knp_pagination_sortable(questions, 'Question', 'q.content') }}</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% if questions %}
+                    {% for question in questions %}
+                        <tr>
+                            <td scope="col">{{ question.id }}</td>
+                            <td>{{ question.content }}</td>
+                        </tr>
+                    {% endfor %}
+                {% endif %}
+                </tbody>
+            </table>
+            <div class="navigation">
+                {{ knp_pagination_render(questions) }}
+            </div>
+
+        </div>
+    </div>
+{% endblock %}
+
+{% block javascripts %}
 {% endblock %}
