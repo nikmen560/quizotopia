@@ -11,45 +11,33 @@
             <div class="col-12 col-lg-4 col-md-4 ">
                 <div class="form-login shadow-lg border" style="padding: 30px; margin: 30% auto">
 
-                    <h1 class="h3 mb-3 font-weight-normal text-center">Sign up</h1>
+                    <h1 class="h3 mb-3 font-weight-normal text-center mb-4">Sign up</h1>
                     {{ form_start(registrationForm) }}
 
 
-                    <div class="input-group mt-4">
-
-                            <span class="input-group-append bg-white border-left-0">
-                                <span class="input-group-text bg-transparent">
-                                    <i class="icon fa fa-user p-1"></i>
-                                </span>
-                            </span>
-
+                        <div class="form-group input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text"> <i class="fa fa-user p-1"></i> </span>
+                            </div>
                         {{ form_widget(registrationForm.username,{'attr': {'class': 'form-control',
                             'placeholder': "Enter username"}}) }}
+                        </div>
 
 
-                    </div>
-
-                    <div class="input-group mt-4">
-
-                            <span class="input-group-append bg-white border-left-0">
-                                <span class="input-group-text bg-transparent ">
-                                    <i class="icon fa fa-envelope p-1"></i>
-                                </span>
-                             </span>
+                    <div class="form-group input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"> <i class="fa fa-envelope"></i> </span>
+                        </div>
                         {{ form_widget(registrationForm.email,{'attr': {
                             'class': 'form-control',
                             'placeholder': "Enter email"}
                         }) }}
-
                     </div>
 
-                    <div class="input-group mt-4 mb-4">
-
-                            <span class="input-group-append bg-white border-left-0">
-                                <span class="input-group-text bg-transparent ">
-                                    <i class="icon fa fa-key p-1"></i>
-                                </span>
-                             </span>
+                    <div class="form-group input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
+                        </div>
                         {{ form_widget(registrationForm.plainPassword,{'attr': {
                             'class': 'form-control',
                             'placeholder': "Enter password"}
@@ -58,17 +46,18 @@
                     </div>
 
 
-                    <div class="form-group form-check mt-3">{{ form_label(registrationForm.agreeTerms,null, {
-                            'attr' :{'class': 'form-check-label mt-4'},
-                            'label' : 'Agree terms'
-                        }) }}
+                            <div class="form-group login-group form-check mt-3">{{ form_label(registrationForm.agreeTerms,null, {
+                                    'attr' :{'class': 'form-check-label mt-4'},
+                                    'label' : 'Agree terms'
+                                }) }}
 
-                        {{ form_widget(registrationForm.agreeTerms, {
-                            'attr' :{'class': 'form-check-label',
-                            }
-                        }) }}
-                    </div>
+                                {{ form_widget(registrationForm.agreeTerms, {
+                                    'attr' :{'class': 'form-check-label',
+                                    }
+                                }) }}
+                            </div>
                     <button class="btn btn-block btn-primary bg-info mt-3" type="submit">Register</button>
+                    <p class="text-center mt-4">Have an account? <a href="{{ path('app_login') }}">Log In</a> </p>
                     {{ form_end(registrationForm) }}
                 </div>
             </div>

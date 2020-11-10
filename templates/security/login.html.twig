@@ -20,36 +20,35 @@
                             </div>
                         {% endif %}
 
-                        <h1 class="h3 mb-3 font-weight-normal text-center">Sign in</h1>
+                        <h1 class="h3 mb-4 font-weight-normal text-center ">Sign in</h1>
 
 
-                        <div class="input-group mt-4">
-
-                            <span class="input-group-append bg-white border-left-0">
-                                <span class="input-group-text bg-transparent">
-                                    <i class="icon fa fa-user p-1"></i>
-                                </span>
-                            </span>
+                        <div class="form-group input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text"> <i class="fa fa-user p-1"></i> </span>
+                            </div>
                             <input type="text" value="{{ last_username }}" name="username" id="inputUsername"
                                    placeholder="Enter username" class="form-control input-field" required
                                    autofocus>
                         </div>
-                        <div class="input-group mt-4">
 
-                            <span class="input-group-append bg-white border-left-0">
-                                <span class="input-group-text bg-transparent ">
-                                    <i class="icon fa fa-key p-1"></i>
-                                </span>
-                             </span>
+                        <div class="form-group input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text"> <i class="fa fa-lock p-1"></i> </span>
+                            </div>
                             <input type="password" name="password" id="inputPassword" placeholder="Enter password"
                                    class="form-control input-field" required>
                         </div>
 
-                        <div class="clearfix mt-2">
-                            <label class="float-left checkbox-inline"><input type="checkbox" name="_remember_me">
-                                Remember me</label>
-                            <a href="{{ path('app_forgot_password_request') }}" class="float-right">Forgot Password?</a>
+
+                        <div class="form-group mt-2">
+                            <div class="custom-control custom-checkbox">
+                                <input type="checkbox" class="custom-control-input" name="_remember_me"
+                                       id="customControlInline">
+                                <label class="custom-control-label" for="customControlInline">Remember me</label>
+                            </div>
                         </div>
+
 
                         <input type="hidden" name="_csrf_token"
                                value="{{ csrf_token('authenticate') }}">
@@ -71,6 +70,15 @@
                         </button>
 
                     </form>
+
+                    <div class="mt-4">
+                        <div class="d-flex justify-content-center text-center links">
+                            Don't have an account? <a href="{{ path('app_register') }}" class="ml-2">Sign Up</a>
+                        </div>
+                        <div class="d-flex justify-content-center links">
+                            <a href="{{ path('app_forgot_password_request') }}">Forgot your password?</a>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
