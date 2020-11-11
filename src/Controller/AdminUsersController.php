@@ -24,11 +24,11 @@ class AdminUsersController extends AbstractController
             $request->query->getInt('page', 1),
             $request->query->getInt('limit', 10)
         );
+
         return $this->render('admin_users/index.html.twig', [
             'users' => $result,
         ]);
     }
-
     /**
      * @Route("/admin/users/delete_user/{id}", name="delete_user")
      * @param $id
