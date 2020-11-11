@@ -28,6 +28,10 @@ class Question
      * @ORM\OneToMany(targetEntity=Answer::class, mappedBy="question_id", orphanRemoval=true)
      */
     private $answers;
+    /**
+     * @ORM\OneToOne(targetEntity=QuizQuestion::class, mappedBy="question", orphanRemoval=true)
+     */
+    private $quizQuestion;
 
     public function __construct()
     {
@@ -79,5 +83,8 @@ class Question
         }
 
         return $this;
+    }
+    public function getQuizQuestion():QuizQuestion{
+        return $this->quizQuestion;
     }
 }
