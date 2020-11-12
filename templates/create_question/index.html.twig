@@ -1,12 +1,47 @@
-{% extends 'base.html.twig' %}
+{% extends 'admin_base.twig' %}
 
 {% block title %}Hello CreateQuestionController!{% endblock %}
 
 {% block content %}
-    <div>{{ form_start(CreateQuestionForm) }}
+    <div class="container-fluid">
+        <div class="row no-gutters justify-content-center">
+            <div class="col-12 col-lg-4 col-md-4 ">
+                <div class="form-login shadow-lg border" style="padding: 30px; margin: 20% auto">
+
+                        <h1 class="h3 mb-3 font-weight-normal text-center mb-4">Create question</h1>
 
 
-        <button type="submit">Create Question</button>
+                        <div class="form-group input-group">
+                            {{ form_widget(CreateQuestionForm.content,{'attr': {
+                                'class': 'form-control',
+                                'placeholder': "Enter a question"}
+                            }) }}
+                        </div>
+
+                        <div class="form-group input-group">
+                            {{ form_widget(CreateQuestionForm.correct_answer,{'attr': {
+                                'class': 'form-control',
+                                'placeholder': "Correct answer"}
+                            }) }}
+
+                        </div>
+
+                        <div class="form-group input-group">
+                            {{ form_widget(CreateQuestionForm.answer_1,{'attr': {
+                                'class': 'form-control',
+                                'placeholder': "Other answer"}
+                            }) }}
+
+                        </div>
+                    <button class="btn btn-block btn-primary bg-info mt-3" type="submit">
+                       Create
+                    </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
 
 
     {{ form_end(CreateQuestionForm) }}

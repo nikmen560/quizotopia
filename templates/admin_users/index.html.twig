@@ -36,17 +36,12 @@
     <table class="table mt-4" id="usertable">
         <thead>
         <tr>
-            <th scope="col">{{ knp_pagination_sortable(users, 'id', 'u.id') }}</th>
+            <th scope="col">id</th>
 
-            <th scope="col"{% if users.isSorted('u.username') %} class="sorted"{% endif %}>
-                {{ knp_pagination_sortable(users, 'Users', 'u.username') }}</th>
-            <th scope="col"{% if users.isSorted('u.email') %} class="sorted"{% endif %}>
-                {{ knp_pagination_sortable(users, 'Email', 'u.email') }}
-            </th>
+            <th scope="col">Username</th>
+            <th scope="col">Email</th>
             <th scope="col">Roles</th>
-            <th scope="col" {% if users.isSorted('u.status') %} class="sorted"{% endif %}>
-                {{ knp_pagination_sortable(users, 'Status', 'u.status') }}
-            </th>
+            <th scope="col">Status</th>
             <th></th>
         </tr>
         </thead>
@@ -69,8 +64,28 @@
         {% endif %}
         </tbody>
     </table>
-    <div class="navigation">
-        {{ knp_pagination_render(users) }}
-    </div>
+
 
 {% endblock %}
+
+{% block stylesheets %}
+
+    <link rel="stylesheet" href="{{ asset('/public/assets/framework/bootstrap/css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.22/css/dataTables.bootstrap4.min.css">
+
+{% endblock %}
+{% block javascripts %}
+
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <script src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.22/js/dataTables.bootstrap4.min.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            $('#usertable').DataTable();
+        });
+    </script>
+
+{% endblock %}
+
