@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello CreateQuizController!{% endblock %}
+
+{% block content %}
+    <table class="table">
+        <thead>
+        <th>Question</th>
+        </thead>
+    {{ form_start(CreateQuizForm) }}
+        <tbody>
+        <td>{{ form_row(CreateQuizForm.quizQuestions) }}</td>
+        </tbody>
+    {{ form_end(CreateQuizForm) }}
+    </table>
+{% endblock %}

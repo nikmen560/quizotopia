@@ -29,13 +29,14 @@ class Question
      */
     private $answers;
     /**
-     * @ORM\OneToOne(targetEntity=QuizQuestion::class, mappedBy="question", orphanRemoval=true)
+     * @ORM\OneToMany(targetEntity=QuizQuestion::class, mappedBy="question", orphanRemoval=true)
      */
-    private $quizQuestion;
+    private $quizQuestions;
 
     public function __construct()
     {
         $this->answers = new ArrayCollection();
+        $this->quizQuestions = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -86,5 +87,35 @@ class Question
     }
     public function getQuizQuestion():QuizQuestion{
         return $this->quizQuestion;
+    }
+
+    /**
+     * @return Collection|QuizQuestion[]
+     */
+    public function getQuizQuestions(): Collection
+    {
+        return $this->quizQuestions;
+    }
+
+    public function addQuizQuestion(QuizQuestion $quizQuestion): self
+    {
+        if (!$this->quizQuestions->contains($quizQuestion)) {
+            $this->quizQuestions[] = $quizQuestion;
+            $quizQuestion->setQuestion($this);
+        }
+
+        return $this;
+    }
+
+    public function removeQuizQuestion(QuizQuestion $quizQuestion): self
+    {
+        if ($this->quizQuestions->removeElement($quizQuestion)) {
+            // set the owning side to null (unless already changed)
+            if ($quizQuestion->getQuestion() === $this) {
+                $quizQuestion->setQuestion(null);
+            }
+        }
+
+        return $this;
     }
 }

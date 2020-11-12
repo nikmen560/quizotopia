@@ -16,18 +16,18 @@ class QuizQuestion
      * @ORM\Column(type="integer")
      */
     private $id;
-
-    /**
-     * @ORM\OneToOne(targetEntity=Question::class, cascade={"persist", "remove"})
-     * @ORM\JoinColumn(nullable=false)
-     */
-    private $question;
-
+    
     /**
      * @ORM\ManyToOne(targetEntity=Quiz::class, inversedBy="quizQuestions")
      * @ORM\JoinColumn(nullable=false)
      */
     private $quiz;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=Question::class, inversedBy="quizQuestions")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $question;
 
     public function getId(): ?int
     {
