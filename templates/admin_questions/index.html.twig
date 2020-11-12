@@ -31,14 +31,15 @@
     </nav>
 {% endblock %}
 {% block content %}
-    <div class="container-fluid mt-4">
-        <div class="w-50">
 
             <table class="table" id="table-questions">
                 <thead>
                 <tr>
                     <th>id</th>
                     <th>question</th>
+                    <th>answers</th>
+                    <th></th>
+                    <th></th>
                 </tr>
                 </thead>
 
@@ -48,14 +49,20 @@
                         <tr>
                             <td scope="col">{{ question.id }}</td>
                             <td>{{ question.content }}</td>
+                            <td>
+                        {% for answer in answers %}
+                            {% if(answer.questionid.id==question.id) %}
+                            <div{% if(answer.istrue) %} class="table-success"{% else %} class="table-danger"{% endif%} >{{  answer.content }}</div>
+                            {% endif %}
+                        {% endfor %}
+                            </td>
+                            <td><button class="btn btn-primary bg-info ">Edit</button></td>
+                            <td><button class="btn btn-danger">Delete</button></td>
                         </tr>
                     {% endfor %}
                 {% endif %}
                 </tbody>
             </table>
-
-        </div>
-    </div>
 {% endblock %}
 {% block stylesheets %}
 
