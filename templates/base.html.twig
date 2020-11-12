@@ -1,36 +1,48 @@
 <!DOCTYPE html>
 <html>
-{% block head %}
-    <head>
-        <meta charset="UTF-8">
-        <title>{% block title %}Welcome to Quizotopia!{% endblock %}</title>
-        {% block stylesheets %}
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Welcome to Quizotopia!{% endblock %}</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+          integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN"
+          crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.19.1/css/mdb.min.css" rel="stylesheet">
 
-            <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
-            <link rel="stylesheet" href="{{ asset('/public/assets/framework/bootstrap/css/bootstrap.min.css') }}">
-            <link rel="stylesheet" href="{{ asset('/public/assets/main/style.css') }}">
-        {% endblock %}
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.19.1/js/mdb.min.js"></script>
 
-    </head>
-{% endblock %}
+    {% block head %}
+
+    {% endblock %}
+</head>
 <body>
-{% block navigation %}
-    <nav class="navbar navbar-expand-lg navbar-light bg-light h4">
 
-        <a class="navbar-brand" href="{{ path('mainpage') }}"><img src="/public/assets/images/logo1.png" alt=""></a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
+<header>
+        <nav class="navbar navbar-expand-md navbar-light bg-light h4">
 
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav mr-auto">
-                <li class="nav-item active">
-                    <a class="nav-link" href="{{ path('mainpage') }}">Home<span class="sr-only">(current)</span></a>
-                </li>
-            </ul>
-        </div>
+            <a class="navbar-brand" href="{{ path('mainpage') }}"><img src="/public/assets/images/logo1.png" alt=""></a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+        {% block navigation %}
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="{{ path('mainpage') }}">Home<span class="sr-only">(current)</span></a>
+                    </li>
+                </ul>
+            </div>
+        {% endblock %}
     </nav>
-{% endblock %}
+</header>
+<main>
+
 <div id="content" class="container-fluid">
     <div class="row no-gutters justify-content-center">
         {% block content %}
@@ -38,15 +50,34 @@
         {% endblock %}
     </div>
 </div>
-{% block javascripts %}
 
-    <script src="https://unpkg.com/@popperjs/core@2"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</main>
+<footer class="page-footer font-small unique-color-dark pt-4">
 
-    <script src="{{ asset('/public/assets/framework/bootstrap/js/bootstrap.min.js') }}"></script>
+    <!-- Footer Elements -->
+    <div class="container">
 
+        <!-- Call to action -->
+        <ul class="list-unstyled list-inline text-center py-2">
+            <li class="list-inline-item">
+                <h5 class="mb-1">Register for free</h5>
+            </li>
+            <li class="list-inline-item">
+                <a href="#!" class="btn btn-outline-white btn-rounded">Sign up!</a>
+            </li>
+        </ul>
+        <!-- Call to action -->
 
+    </div>
+    <!-- Footer Elements -->
 
-{% endblock %}
+    <!-- Copyright -->
+    <div class="footer-copyright text-center py-3">© 2020 Copyright:
+        <a href="https://mdbootstrap.com/"> MDBootstrap.com</a>
+    </div>
+    <!-- Copyright -->
+
+</footer>
+<!-- Footer -->
 </body>
 </html>

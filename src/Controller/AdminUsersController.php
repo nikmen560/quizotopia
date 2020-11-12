@@ -18,15 +18,10 @@ class AdminUsersController extends AbstractController
      */
     public function index(UserRepository $userRepository, PaginatorInterface $paginator, Request $request): Response
     {
-        $users = $userRepository->findAllUsers();
-        $result = $paginator->paginate(
-            $users,
-            $request->query->getInt('page', 1),
-            $request->query->getInt('limit', 10)
-        );
+        $users = $userRepository->findAll();
 
         return $this->render('admin_users/index.html.twig', [
-            'users' => $result,
+            'users' => $users,
         ]);
     }
     /**

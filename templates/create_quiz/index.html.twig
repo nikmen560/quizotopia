@@ -1,16 +1,46 @@
-{% extends 'base.html.twig' %}
+{% extends 'admin_base.twig' %}
 
 {% block title %}Hello CreateQuizController!{% endblock %}
 
 {% block content %}
-    <table class="table">
-        <thead>
-        <th>Question</th>
-        </thead>
     {{ form_start(CreateQuizForm) }}
+    <table class="table" id="q-table">
+        <thead>
+        <tr>
+            <th></th>
+            <th>question</th>
+        </tr>
+        </thead>
         <tbody>
-        <td>{{ form_row(CreateQuizForm.quizQuestions) }}</td>
+        {% for question in CreateQuizForm.quizQuestions  %}
+            <tr>
+                <td>{{ form_widget(question) }}</td>
+                <td>{{ form_label(question) }}</td>
+            </tr>
+        {% endfor %}
         </tbody>
     {{ form_end(CreateQuizForm) }}
     </table>
 {% endblock %}
+
+{#{% block stylesheets %}#}
+
+{#    <link rel="stylesheet" href="{{ asset('/public/assets/framework/bootstrap/css/bootstrap.min.css') }}">#}
+{#    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.css">#}
+{#    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.22/css/dataTables.bootstrap4.min.css">#}
+
+{#{% endblock %}#}
+{#{% block javascripts %}#}
+
+{#    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>#}
+{#    <script src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js"></script>#}
+{#    <script src="https://cdn.datatables.net/1.10.22/js/dataTables.bootstrap4.min.js"></script>#}
+
+    <script>
+        $(document).ready(function () {
+            $('#q-table').DataTable();
+        });
+    </script>
+
+{#{% endblock %}#}
+

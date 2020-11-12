@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\Question;
 use App\Repository\AnswerRepository;
 use App\Repository\QuestionRepository;
 use Knp\Component\Pager\PaginatorInterface;
@@ -23,5 +24,19 @@ class AdminQuestionsController extends AbstractController
             'questions' => $questions,
             'answers'=> $answers,
         ]);
+    }
+    /**
+     * @Route("/admin/questions/delete_question/{id}", name="delete_question")
+     * @param $id
+     */
+    public function deleteUser($id)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $usr= $em->getRepository(Question::class)->find($id);
+        $em->remove($usr);
+        $em->flush();
+
+
+        return $this->redirectToRoute('admin_questions');
     }
 }

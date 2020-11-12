@@ -3,14 +3,6 @@
 {% block title %}Hello AdminUsersController!{% endblock %}
 
 {% block navigation %}
-    <nav class="navbar navbar-expand-lg navbar-light bg-light h4">
-
-        <a class="navbar-brand" href="{{ path('mainpage') }}"><img src="/public/assets/images/logo1.png" alt=""></a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item">
@@ -36,17 +28,12 @@
     <table class="table mt-4" id="usertable">
         <thead>
         <tr>
-            <th scope="col">{{ knp_pagination_sortable(users, 'id', 'u.id') }}</th>
+            <th scope="col">id</th>
 
-            <th scope="col"{% if users.isSorted('u.username') %} class="sorted"{% endif %}>
-                {{ knp_pagination_sortable(users, 'Users', 'u.username') }}</th>
-            <th scope="col"{% if users.isSorted('u.email') %} class="sorted"{% endif %}>
-                {{ knp_pagination_sortable(users, 'Email', 'u.email') }}
-            </th>
+            <th scope="col">Username</th>
+            <th scope="col">Email</th>
             <th scope="col">Roles</th>
-            <th scope="col" {% if users.isSorted('u.status') %} class="sorted"{% endif %}>
-                {{ knp_pagination_sortable(users, 'Status', 'u.status') }}
-            </th>
+            <th scope="col">Status</th>
             <th></th>
         </tr>
         </thead>
@@ -69,8 +56,23 @@
         {% endif %}
         </tbody>
     </table>
-    <div class="navigation">
-        {{ knp_pagination_render(users) }}
-    </div>
+
+    {% block js %}
+    <script>
+        $(document).ready(function () {
+            $('#usertable').DataTable();
+        });
+    </script>
+    {% endblock %}
 
 {% endblock %}
+
+
+
+
+
+
+
+
+
+
