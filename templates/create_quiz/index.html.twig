@@ -4,7 +4,11 @@
 
 {% block content %}
     {{ form_start(CreateQuizForm) }}
-    <table class="table" id="q-table">
+    <button class="btn btn-block btn-primary bg-info mt-3" type="submit">Create Quiz</button>
+    <a class="btn btn-block btn-primary" data-toggle="collapse" href="#q-table" role="button" aria-expanded="false" aria-controls="collapseExample">
+        Choose Questions
+    </a>
+    <table class="table collapse" id="q-table">
         <thead>
         <tr>
             <th></th>
@@ -21,7 +25,7 @@
         </tbody>
     {{ form_end(CreateQuizForm) }}
     </table>
-{% endblock %}
+    {#  % endblock %}#}
 
 {#{% block stylesheets %}#}
 
@@ -38,9 +42,12 @@
 
     <script>
         $(document).ready(function () {
-            $('#q-table').DataTable();
+            $('#q-table').DataTable({
+                "paging":false,
+                "ordering": false,
+                "info":     false,})
         });
     </script>
 
-{#{% endblock %}#}
+{% endblock %}
 
