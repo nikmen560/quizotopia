@@ -6,6 +6,7 @@ namespace App\Form;
 
 use App\Entity\Question;
 use App\Entity\Quiz;
+use App\Entity\QuizQuestion;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -29,7 +30,7 @@ class CreateQuizFormType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([
-            'data_class' => Quiz::class,
+            'data_class' => null,
         ]);
     }
 }
