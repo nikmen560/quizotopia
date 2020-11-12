@@ -2,14 +2,8 @@
 
 {% block title %}Hello AdminQuestionsController!{% endblock %}
 
-{% block navigation %}
-    <nav class="navbar navbar-expand-lg navbar-light bg-light h4">
 
-        <a class="navbar-brand" href="{{ path('mainpage') }}"><img src="/public/assets/images/logo1.png" alt=""></a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
+{% block navigation %}
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
@@ -63,24 +57,18 @@
                 {% endif %}
                 </tbody>
             </table>
-{% endblock %}
-{% block stylesheets %}
-
-    <link rel="stylesheet" href="{{ asset('/public/assets/framework/bootstrap/css/bootstrap.min.css') }}">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.css">
-    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.22/css/dataTables.bootstrap4.min.css">
-
-{% endblock %}
-{% block javascripts %}
-
-    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
-    <script src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js"></script>
-    <script src="https://cdn.datatables.net/1.10.22/js/dataTables.bootstrap4.min.js"></script>
 
     <script>
         $(document).ready(function () {
             $('#table-questions').DataTable();
         });
     </script>
-
 {% endblock %}
+
+
+
+
+
+
+
+
