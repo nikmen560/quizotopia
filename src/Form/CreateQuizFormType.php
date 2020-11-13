@@ -24,7 +24,9 @@ class CreateQuizFormType extends AbstractType
             'choice_value' => function (Question $question) {
                 return $question ? $question->getId() : '';
             },
-        ]);
+        ])
+            ->add('quizName');
+
     }
 
     public function configureOptions(OptionsResolver $resolver)
