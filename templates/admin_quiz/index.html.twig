@@ -28,7 +28,7 @@
                 </div>
             </li>
         </ul>
-        <a class="nav-link btn btn-secondary" href="{{ path('app_logout') }}">logout</a>
+        <a class="nav-link btn btn-outline-info" href="{{ path('app_logout') }}">logout</a>
     </div>
     </nav>
 {% endblock %}
@@ -39,7 +39,7 @@
             {% if quizzes %}
 
                 {% for quiz in quizzes %}
-                    <div class="col-sm-4">
+                    <div class="col-sm-4 mb-4">
                         <div class="card card-cascade wider">
 
                             <div class="view view-cascade gradient-card-header blue-gradient p-4">

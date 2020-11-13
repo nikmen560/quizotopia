@@ -29,13 +29,13 @@
                     </div>
                 </li>
             </ul>
-            <a class="nav-link btn btn-secondary" href="{{ path('app_logout') }}">logout</a>
+            <a class="nav-link btn btn-outline-info" href="{{ path('app_logout') }}">logout</a>
         </div>
     </nav>
 {% endblock %}
 {% block content %}
-
-            <table class="table mt-4" id="table-questions">
+<div class="container-fluid mt-4 mb-4 ">
+            <table class="table table-striped table-bordered" id="table-questions">
                 <thead>
                 <tr>
                     <th>id</th>
@@ -67,6 +67,7 @@
                 </tbody>
             </table>
 
+</div>
     <script>
         $(document).ready(function () {
             $('#table-questions').DataTable();
