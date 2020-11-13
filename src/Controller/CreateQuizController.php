@@ -19,11 +19,11 @@ class CreateQuizController extends AbstractController
     public function index(Request $request): Response
     {
         $quiz=new Quiz();
-        $quiz->setName('Testquiz');
         $em=$this->getDoctrine()->getManager();
         $form = $this->createForm(CreateQuizFormType::class);
         $form->handleRequest($request);
         if($form->isSubmitted() && $form->isValid()){
+            $quiz->setName($form->get('quizName')->getData());
             $questions=$form->get('quizQuestions')->getData();
             foreach ($questions as $question){
                 $quizQuestion=new QuizQuestion();
