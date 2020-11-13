@@ -18,6 +18,17 @@ class QuizQuestionRepository extends ServiceEntityRepository
     {
         parent::__construct($registry, QuizQuestion::class);
     }
+    public function findNextQuestion($previousQuestionId,$quizId){
+        return $this->createQueryBuilder('q')
+            ->where('q.id > :val')
+            ->andWhere('q.quiz =:quiz_id')
+            ->setParameter('quiz_id',$quizId)
+            ->setParameter('val',$previousQuestionId)
+            ->setMaxResults(1)
+            ->getQuery()
+            ->getOneOrNullResult()
+            ;
+    }
 
     // /**
     //  * @return QuizQuestion[] Returns an array of QuizQuestion objects
