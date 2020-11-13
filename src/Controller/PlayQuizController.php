@@ -12,8 +12,9 @@ class PlayQuizController extends AbstractController
      * @Route("/play/quiz/{id}", name="play_quiz")
      * @param $id
      */
-    public function index($id): Response
+    public function index($id, QuizRepository $quizRepository): Response
     {
+        $quiz=$quizRepository->find($id);
         return $this->render('play_quiz/index.html.twig', [
             'controller_name' => 'PlayQuizController',
         ]);
