@@ -3,13 +3,7 @@
 
 {% block title %}Hello AdminController!{% endblock %}
 {% block navigation %}
-{#    <nav class="navbar navbar-expand-md navbar-light bg-light h4">#}
 
-{#        <a class="navbar-brand" href="{{ path('mainpage') }}"><img src="/public/assets/images/logo1.png" alt=""></a>#}
-{#        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"#}
-{#                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">#}
-{#            <span class="navbar-toggler-icon"></span>#}
-{#        </button>#}
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
@@ -20,20 +14,232 @@
                     <a class="nav-link" href="{{ path('admin_users') }}">Users control</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link disabled" href="{{ path('mainpage') }}">Quizzes control</a>
+                    <a class="nav-link " href="{{ path('admin_quizes') }}">Quizzes control</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="{{ path('admin_questions') }}">Questions control</a>
                 </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                       Create
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="{{ path('create_question') }}">Create Question</a>
+                        <a class="dropdown-item" href="{{ path('create_quiz') }}">Create Quiz</a>
+                    </div>
+                </li>
             </ul>
-            <a class="nav-link btn btn-secondary" href="{{ path('app_logout') }}">logout</a>
+            <a class="nav-link btn btn-outline-info" href="{{ path('app_logout') }}">logout</a>
         </div>
     </nav>
 {% endblock %}
 
 {% block content %}
 
-    <h1>Hello Admin ✅</h1>
+<section class="view intro-2"
+         style="background-image: url('https://mdbootstrap.com/img/Photos/Others/images/62.jpg');">
+    <div class="mask">
+        <div class="container h-100 d-flex justify-content-center align-items-center">
+            <div class="row flex-center pt-5 mt-3">
+                <div class="col-md-12 col-lg-6 text-center text-md-left margins">
+                    <div class="dark-grey-text">
+                        <h1 class="display-4 title mt-md-5 mt-lg-0 font-weight-bold wow fadeIn" data-wow-delay="0.3s">
+                            <strong>Quizotopia</strong>
+                        </h1>
+                        <hr class="hr-light wow fadeIn" data-wow-delay="0.3s">
+                        <h6 class="grey-text wow fadeIn" data-wow-delay="0.3s">Lorem ipsum dolor sit amet, consectetur
+                            adipisicing elit. Rem repellendus quasi fuga nesciunt
+                            dolorum nulla magnam veniam sapiente, fugiat! Commodi sequi non animi ea dolor molestiae
+                            iste.
+                        </h6>
+                        <br>
+                        <a class="btn btn-white btn-rounded blue-text font-weight-bold ml-lg-0 wow fadeIn"
+                           data-wow-delay="0.3s">Portfolio</a>
+                        <a class="btn pink-gradient white-text btn-rounded font-weight-bold wow fadeIn"
+                           data-wow-delay="0.3s">Learn more
+                        </a>
+                    </div>
+                </div>
+
+                <div class="col-md-12 col-lg-6 wow fadeIn" data-wow-delay="0.3s">
+                    <img src="https://mdbootstrap.com/img/Mockups/Transparent/Small/admin-new.png" alt="" class="img-fluid">
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+</header>
+<!-- Navigation & Intro -->
+
+<!-- Main content -->
+<main>
+
+    <div class="container">
+
+        <!-- Section: About -->
+        <section id="about" class="about mt-5 mb-5 py-3 wow fadeIn" data-wow-delay="0.2s">
+
+            <!-- Grid row -->
+            <div class="row pt-2 mt-5">
+
+                <!-- Grid column -->
+                <div class="col-lg-5 col-md-12 mb-3 wow fadeIn" data-wow-delay="0.4s">
+                    <!-- Image -->
+                    <img src="https://mdbootstrap.com/img/Photos/Others/images/66.jpg" class="img-fluid z-depth-1 rounded"
+                         alt="My photo">
+                </div>
+                <!-- Grid column -->
+
+                <!-- Grid column -->
+                <div class="col-lg-6 ml-auto col-md-12 wow fadeIn" data-wow-delay="0.4s">
+
+                    <!-- Secion heading -->
+                    <h3 class="mb-5 dark-grey-text title font-weight-bold wow fadeIn" data-wow-delay="0.2s">
+                        <strong>Hi Admin, do what you want</strong>
+                    </h3>
+
+                    <!-- Description -->
+                    <p align="justify" class="grey-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nemo animi
+                        soluta ratione quisquam, dicta
+                        ab cupiditate iure eaque? Repellendus voluptatum, magni impedit delectus, beatae maxime temporibus
+                        maiores quibusdam.</p>
+                    <p align="justify" class="grey-text">Rem magnam ad perferendis iusto sint tempora ea voluptatibus iure,
+                        animi excepturi modi aut possimus
+                        in hic molestias repellendus illo ullam odit quia velit. Lorem ipsum dolor sit amet, consectetur
+                        adipisicing elit.</p>
+                    <p align="justify" class="grey-text mb-5">Incidunt eligendi mollitia labore ipsum ex fugit explicabo saepe
+                        error neque beatae in, expedita
+                        eveniet quae aliquam assumenda voluptatibus!</p>
+
+                </div>
+                <!-- Grid column -->
+
+            </div>
+            <!-- Grid row -->
+
+        </section>
+        <!-- Section: About -->
+
+        <hr>
+
+        <!-- Section: Features v.4 -->
+        <section id="features" class="mb-5 pb-4">
+
+            <!-- Section heading -->
+            <h3 class="text-center title my-5 dark-grey-text font-weight-bold wow fadeIn" data-wow-delay="0.2s">
+                <strong>Awesome project</strong>
+            </h3>
+
+            <!-- Section sescription -->
+            <p class="text-center w-responsive mx-auto my-5 grey-text wow fadeIn" data-wow-delay="0.2s">
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laborum quas, eos officia maiores ipsam ipsum
+                dolores reiciendis
+                ad voluptas, animi obcaecati adipisci sapiente mollitia.</p>
+
+            <!-- Grid row -->
+            <div class="row features-small wow fadeIn" data-wow-delay="0.4s">
+
+                <!-- Grid column -->
+                <div class="col-lg-4 col-md-12">
+                    <!-- Grid row -->
+                    <div class="row mb-3">
+                        <div class="col-2">
+                            <i class="fa fa-edit orange-text fa-2x"></i>
+                        </div>
+                        <div class="col-10 mb-2">
+                            <h5 class="font-weight-bold title">Modern design</h5>
+                            <p class="grey-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reprehenderit maiores
+                                nam, aperiam
+                                minima.
+                            </p>
+                        </div>
+                    </div>
+                    <!-- Grid row -->
+
+                    <!-- Grid row -->
+                    <div class="row mb-3">
+                        <div class="col-2">
+                            <i class="fa fa-cogs orange-text fa-2x"></i>
+                        </div>
+                        <div class="col-10 mb-2">
+                            <h5 class="font-weight-bold title">Easy customize</h5>
+                            <p class="grey-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reprehenderit maiores
+                                nam, aperiam
+                                minima assumenda.</p>
+                        </div>
+                    </div>
+                    <!-- Grid row -->
+
+                    <!-- Grid row -->
+                    <div class="row">
+                        <div class="col-2">
+                            <i class="fa fa-tablet-alt orange-text fa-2x"></i>
+                        </div>
+                        <div class="col-10 mb-2">
+                            <h5 class="font-weight-bold title">Responsive layouts</h5>
+                            <p class="grey-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reprehenderit maiores
+                                nam, aperiam.</p>
+                        </div>
+                    </div>
+                    <!-- Grid row -->
+                </div>
+                <!-- Grid column -->
+
+                <!-- Grid column -->
+                <div class="col-lg-4 col-md-12 mb-1 text-center text-md-left">
+                    <img src="https://mdbootstrap.com/img/Mockups/Transparent/Small/admin-new.png" alt=""
+                         class="z-depth-0 img-fluid">
+                </div>
+                <!-- Grid column -->
+
+                <!-- Third column -->
+                <div class="col-lg-4 col-md-12">
+                    <!-- Grid row -->
+                    <div class="row mb-3">
+                        <div class="col-2">
+                            <i class="fa fa-chart-line orange-text fa-2x"></i>
+                        </div>
+                        <div class="col-10 mb-2">
+                            <h5 class="font-weight-bold title">Optymized for SEO</h5>
+                            <p class="grey-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reprehenderit maiores
+                                nam, aperiam.</p>
+                        </div>
+                    </div>
+                    <!-- Grid row -->
+
+                    <!-- Grid row -->
+                    <div class="row mb-3">
+                        <div class="col-2">
+                            <i class="fa fa-users orange-text fa-2x"></i>
+                        </div>
+                        <div class="col-10 mb-2">
+                            <h5 class="font-weight-bold title">Technical support</h5>
+                            <p class="grey-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reprehenderit maiores
+                                nam, aperiam
+                                minima assumenda.</p>
+                        </div>
+                    </div>
+                    <!-- Grid row -->
+
+                    <!-- Grid row -->
+                    <div class="row">
+                        <div class="col-2">
+                            <i class="fa fa-gem orange-text fa-2x"></i>
+                        </div>
+                        <div class="col-10 mb-2">
+                            <h5 class="font-weight-bold title">High quality</h5>
+                            <p class="grey-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reprehenderit maiores
+                                nam, aperiam
+                                minima.
+                            </p>
+                        </div>
+                    </div>
+                    <!-- Grid row -->
+                </div>
+                <!-- Third column -->
+            </div>
+            <!-- Grid row -->
 {% endblock %}
 {% block javascripts %}
 {% endblock %}

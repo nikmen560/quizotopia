@@ -3,12 +3,19 @@
 {% block title %}Hello CreateQuizController!{% endblock %}
 
 {% block content %}
+    <a href="{{ path('create_question') }}" class="btn btn-block btn-outline-dark">Create question</a>
     {{ form_start(CreateQuizForm) }}
     <button class="btn btn-block btn-primary bg-info mt-3" type="submit">Create Quiz</button>
-    <a class="btn btn-block btn-primary" data-toggle="collapse" href="#q-table" role="button" aria-expanded="false" aria-controls="collapseExample">
-        Choose Questions
-    </a>
-    <table class="table collapse" id="q-table">
+    {{ form_label(CreateQuizForm.quizName) }}
+    {{ form_widget(CreateQuizForm.quizName) }}
+    <button class="btn btn-block btn-primary btn-hide">Choose questions</button>
+
+
+
+<div class="table-hide" style="display: none;">
+
+    <table class="table" id="q-table">
+
         <thead>
         <tr>
             <th></th>
@@ -22,9 +29,12 @@
                 <td>{{ form_label(question) }}</td>
             </tr>
         {% endfor %}
+
         </tbody>
-    {{ form_end(CreateQuizForm) }}
     </table>
+
+    </div>
+    {{ form_end(CreateQuizForm) }}
     {#  % endblock %}#}
 
 {#{% block stylesheets %}#}
@@ -46,7 +56,12 @@
                 "paging":false,
                 "ordering": false,
                 "info":     false,})
+                $('.btn-hide').click(function(){
+                    $('.table-hide').slideToggle(300);
+                    return false;
+                });
         });
+
     </script>
 
 {% endblock %}
