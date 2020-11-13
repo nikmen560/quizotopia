@@ -3,13 +3,7 @@
 
 {% block title %}Hello AdminController!{% endblock %}
 {% block navigation %}
-{#    <nav class="navbar navbar-expand-md navbar-light bg-light h4">#}
 
-{#        <a class="navbar-brand" href="{{ path('mainpage') }}"><img src="/public/assets/images/logo1.png" alt=""></a>#}
-{#        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"#}
-{#                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">#}
-{#            <span class="navbar-toggler-icon"></span>#}
-{#        </button>#}
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
@@ -20,10 +14,19 @@
                     <a class="nav-link" href="{{ path('admin_users') }}">Users control</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link disabled" href="{{ path('mainpage') }}">Quizzes control</a>
+                    <a class="nav-link " href="{{ path('admin_quizes') }}">Quizzes control</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="{{ path('admin_questions') }}">Questions control</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                       Create
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="{{ path('create_question') }}">Create Question</a>
+                        <a class="dropdown-item" href="{{ path('create_quiz') }}">Create Quiz</a>
+                    </div>
                 </li>
             </ul>
             <a class="nav-link btn btn-secondary" href="{{ path('app_logout') }}">logout</a>

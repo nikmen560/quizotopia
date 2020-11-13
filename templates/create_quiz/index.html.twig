@@ -3,11 +3,15 @@
 {% block title %}Hello CreateQuizController!{% endblock %}
 
 {% block content %}
-
-    <button class="btn btn-block btn-primary bg-info mt-3" type="submit">Create Quiz</button>
-
-    <button class="btn btn-block btn-primary btn-hide">Choose questions</button>
+    <a href="{{ path('create_question') }}" class="btn btn-block btn-outline-dark">Create question</a>
     {{ form_start(CreateQuizForm) }}
+    <button class="btn btn-block btn-primary bg-info mt-3" type="submit">Create Quiz</button>
+    {{ form_label(CreateQuizForm.quizName) }}
+    {{ form_widget(CreateQuizForm.quizName) }}
+    <button class="btn btn-block btn-primary btn-hide">Choose questions</button>
+
+
+
 <div class="table-hide" style="display: none;">
 
     <table class="table" id="q-table">
@@ -25,10 +29,12 @@
                 <td>{{ form_label(question) }}</td>
             </tr>
         {% endfor %}
-        {{ form_end(CreateQuizForm) }}
+
         </tbody>
     </table>
+
     </div>
+    {{ form_end(CreateQuizForm) }}
     {#  % endblock %}#}
 
 {#{% block stylesheets %}#}
