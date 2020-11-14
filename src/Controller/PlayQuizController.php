@@ -19,7 +19,8 @@ class PlayQuizController extends AbstractController
         $firstQuestion=$quiz->getQuizQuestions()[0];
         $response=$this->forward('App\Controller\QuizPlayerController::index',[
             'id' =>$firstQuestion->getId(),
-            'quizid'=>$id
+            'quizid'=>$id,
+            'firstId'=>$firstQuestion->getId(),
         ]);
         return $response;
     }

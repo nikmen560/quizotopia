@@ -4,6 +4,7 @@ namespace App\Repository;
 
 use App\Entity\QuizQuestion;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use Doctrine\ORM\Mapping\Entity;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
@@ -24,6 +25,14 @@ class QuizQuestionRepository extends ServiceEntityRepository
             ->andWhere('q.quiz =:quiz_id')
             ->setParameter('quiz_id',$quizId)
             ->setParameter('val',$previousQuestionId)
+            ->setMaxResults(1)
+            ->getQuery()
+            ->getOneOrNullResult()
+            ;
+    }
+    public function findMinId(){
+        return $this->createQueryBuilder('q')
+            ->orderBy('q.id','ASC')
             ->setMaxResults(1)
             ->getQuery()
             ->getOneOrNullResult()

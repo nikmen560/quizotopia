@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hi check{% endblock %}
+
+{% block content %}
+    <div class="container-fluid">
+        {% if isTrue %}
+        <div class="container-fluid">Correct answer!</div>
+        {% else %}
+        <div class="container-fluid">Incorrect answer(((</div>
+        {% endif %}
+        <a class="container-fluid" href="{{ path('quiz_player',{"id":qq, "quizId":quizId, }) }}">Next Question</a>
+    </div>
+{% endblock %}

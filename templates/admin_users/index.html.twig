@@ -59,7 +59,7 @@
                     {% else %}
                         <td>not active</td>
                     {% endif %}
-                    <td><a class="btn btn-danger" value="{{ user.id }}" href="{{ path('delete_user', {"id": user.id})  }};">Delete</a></td>
+                    <td><a class="btn btn-danger" value="{{ user.id }}" href="{{ path('delete_user', {"id": user.id})  }}">Delete</a></td>
                 </tr>
             {% endfor %}
         {% endif %}
