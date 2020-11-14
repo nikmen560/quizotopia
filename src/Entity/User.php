@@ -52,6 +52,11 @@ class User implements UserInterface
      */
     private $status;
 
+    /**
+     * @ORM\OneToOne(targetEntity=QuizUser::class, mappedBy="user", cascade={"persist", "remove"})
+     */
+    private $quizUser;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -145,6 +150,23 @@ class User implements UserInterface
     public function setStatus(bool $status): self
     {
         $this->status = $status;
+
+        return $this;
+    }
+
+    public function getQuizUser(): ?QuizUser
+    {
+        return $this->quizUser;
+    }
+
+    public function setQuizUser(QuizUser $quizUser): self
+    {
+        $this->quizUser = $quizUser;
+
+        // set the owning side of the relation if necessary
+        if ($quizUser->getUser() !== $this) {
+            $quizUser->setUser($this);
+        }
 
         return $this;
     }
