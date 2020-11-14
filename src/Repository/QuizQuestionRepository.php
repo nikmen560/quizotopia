@@ -30,14 +30,27 @@ class QuizQuestionRepository extends ServiceEntityRepository
             ->getOneOrNullResult()
             ;
     }
-    public function findMinId(){
+    public function findMinId($quizId){
         return $this->createQueryBuilder('q')
+            ->where('q.quiz=:quiz_id')
+            ->setParameter('quiz_id',$quizId)
             ->orderBy('q.id','ASC')
             ->setMaxResults(1)
             ->getQuery()
             ->getOneOrNullResult()
             ;
     }
+    public function findMaxId($quizId){
+        return $this->createQueryBuilder('q')
+            ->where('q.quiz=:quiz_id')
+            ->setParameter('quiz_id',$quizId)
+            ->orderBy('q.id','DESC')
+            ->setMaxResults(1)
+            ->getQuery()
+            ->getOneOrNullResult()
+            ;
+    }
+
 
     // /**
     //  * @return QuizQuestion[] Returns an array of QuizQuestion objects

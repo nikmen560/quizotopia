@@ -39,10 +39,11 @@ class QuizUser
     private $result;
 
     /**
-     * @ORM\OneToOne(targetEntity=User::class, inversedBy="quizUser", cascade={"persist", "remove"})
+     * @ORM\ManyToOne(targetEntity=User::class, inversedBy="quizUsers")
      * @ORM\JoinColumn(nullable=false)
      */
     private $user;
+
 
     public function getId(): ?int
     {
@@ -102,7 +103,7 @@ class QuizUser
         return $this->user;
     }
 
-    public function setUser(User $user): self
+    public function setUser(?User $user): self
     {
         $this->user = $user;
 

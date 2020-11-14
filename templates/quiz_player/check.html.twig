@@ -5,10 +5,14 @@
 {% block content %}
     <div class="container-fluid">
         {% if isTrue %}
-        <div class="container-fluid">Correct answer!</div>
+            <div class="container-fluid">Correct answer!</div>
         {% else %}
-        <div class="container-fluid">Incorrect answer(((</div>
+            <div class="container-fluid">Incorrect answer(((</div>
         {% endif %}
-        <a class="container-fluid" href="{{ path('quiz_player',{"id":qq, "quizId":quizId, }) }}">Next Question</a>
+        {% if status %}
+            <div>End</div>
+        {% else %}
+            <a class="container-fluid" href="{{ path('quiz_player',{"id":qq, "quizId":quizId, }) }}">Next Question</a>
+        {% endif %}
     </div>
 {% endblock %}

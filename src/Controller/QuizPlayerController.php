@@ -5,6 +5,8 @@ namespace App\Controller;
 use App\Entity\QuizQuestion;
 use App\Repository\AnswerRepository;
 use App\Repository\QuizQuestionRepository;
+use App\Repository\QuizUserRepository;
+use App\Repository\UserRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -17,21 +19,38 @@ class QuizPlayerController extends AbstractController
      * @param $quizId
      */
 
-    public function index($id, $quizId,QuizQuestionRepository $quizQuestionRepository,$firstId=null): Response
+    public function index($id, $quizId,QuizQuestionRepository $quizQuestionRepository, UserRepository $userRepository, QuizUserRepository $quizUserRepository,$firstId=null): Response
     {
-        if($firstId==null) {
-            $nextQuestion = $quizQuestionRepository->findNextQuestion($id, $quizId);
+        $user=$userRepository->findByUsername($this->getUser()->getUsername());
+        $playingUser=$quizUserRepository->findByUser($user);
+        if($playingUser!=null) {
+            if ($playingUser->getCurrentQuestion() == $id && $playingUser->getQuiz()->getId() == $quizId) {
+                $nextQuestion = $quizQuestionRepository->findNextQuestion($id, $quizId);
+            }
+            elseif($playingUser->getCurrentQuestion()==0){
+                $nextQuestion=$quizQuestionRepository->find($id);
+            }
+            else {
+                return $this->redirectToRoute('quiz_player', [
+                    'id' => $playingUser->getCurrentQuestion(),
+                    'quizId' => $playingUser->getQuiz()->getId()
+                ]);
+            }
+            $answers = $nextQuestion->getQuestion()->getAnswers();
+            $playingUser->setCurrentQuestion($nextQuestion->getId());
+            $em=$this->getDoctrine()->getManager();
+            $em->persist($playingUser);
+            $em->flush();
+            return $this->render('quiz_player/index.html.twig', [
+                'controller_name' => 'QuizPlayerController',
+                'qq' => $nextQuestion,
+                'quizId' => $quizId,
+                'answers' => $answers,
+            ]);
         }
         else{
-            $nextQuestion=$quizQuestionRepository->find($id);
+            return $this->redirectToRoute('quizzes');
         }
-        $answers=$nextQuestion->getQuestion()->getAnswers();
-        return $this->render('quiz_player/index.html.twig', [
-            'controller_name' => 'QuizPlayerController',
-            'qq' => $nextQuestion,
-            'quizId' => $quizId,
-            'answers'=> $answers,
-        ]);
     }
 
     /**
@@ -40,14 +59,39 @@ class QuizPlayerController extends AbstractController
      * @param $quizId
      * @param $answerId
      */
-    public function check($id, $quizId, $answerId, AnswerRepository $answerRepository):Response
+    public function check($id, $quizId, $answerId, AnswerRepository $answerRepository,QuizUserRepository $quizUserRepository,UserRepository $userRepository, QuizQuestionRepository $quizQuestionRepository):Response
     {
-        $isTrue=$answerRepository->find($answerId)->getIstrue();
-
-        return $this->render('quiz_player/check.html.twig',[
-            'quizId'=>$quizId,
-            'isTrue'=>$isTrue,
-            'qq'=>$id,
-        ]);
+        $user=$userRepository->findByUsername($this->getUser()->getUsername());
+        $playingUser=$quizUserRepository->findByUser($user);
+        if($playingUser!=null){
+            if ($playingUser->getCurrentQuestion() == $id && $playingUser->getQuiz()->getId() == $quizId) {
+                $status=false;
+                if($quizQuestionRepository->findMaxId($quizId)->getId()==$id){
+                    $status=true;
+                }
+                $result=$playingUser->getResult();
+                $result++;
+                $playingUser->setResult($result);
+                $em=$this->getDoctrine()->getManager();
+                $em->persist($playingUser);
+                $em->flush();
+                $isTrue = $answerRepository->find($answerId)->getIstrue();
+                return $this->render('quiz_player/check.html.twig', [
+                    'quizId' => $quizId,
+                    'isTrue' => $isTrue,
+                    'qq' => $id,
+                    'status'=>$status
+                ]);
+            }
+            else {
+                return $this->redirectToRoute('quiz_player', [
+                    'id' => $playingUser->getCurrentQuestion(),
+                    'quizId' => $playingUser->getQuiz()->getId()
+                ]);
+            }
+        }
+        else {
+            return $this->redirectToRoute('quizzes');
+        }
     }
 }
