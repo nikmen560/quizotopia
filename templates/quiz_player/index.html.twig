@@ -1,0 +1,10 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello QuizPlayerController!{% endblock %}
+
+{% block content %}
+    <div class="container-fluid">{{ qq.question.content}} </div>
+    {% for answer in answers %}
+        <a class="container-fluid" href="{{ path('quiz_check',{"id":qq.id, "quizId":quizId, "answerId":answer.id}) }}">{{ answer.content }}</a>
+    {% endfor %}
+{% endblock %}

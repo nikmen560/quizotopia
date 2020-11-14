@@ -37,3 +37,4 @@ security:
          - { path: ^/admin, roles: ROLE_ADMIN }
          - { path: ^/create, roles: ROLE_ADMIN }
          - { path: ^/quizzes, roles: ROLE_USER }
+         - { path: ^/play, roles: ROLE_USER }

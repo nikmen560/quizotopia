@@ -4,6 +4,7 @@ namespace App\Repository;
 
 use App\Entity\QuizQuestion;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use Doctrine\ORM\Mapping\Entity;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
@@ -18,6 +19,38 @@ class QuizQuestionRepository extends ServiceEntityRepository
     {
         parent::__construct($registry, QuizQuestion::class);
     }
+    public function findNextQuestion($previousQuestionId,$quizId){
+        return $this->createQueryBuilder('q')
+            ->where('q.id > :val')
+            ->andWhere('q.quiz =:quiz_id')
+            ->setParameter('quiz_id',$quizId)
+            ->setParameter('val',$previousQuestionId)
+            ->setMaxResults(1)
+            ->getQuery()
+            ->getOneOrNullResult()
+            ;
+    }
+    public function findMinId($quizId){
+        return $this->createQueryBuilder('q')
+            ->where('q.quiz=:quiz_id')
+            ->setParameter('quiz_id',$quizId)
+            ->orderBy('q.id','ASC')
+            ->setMaxResults(1)
+            ->getQuery()
+            ->getOneOrNullResult()
+            ;
+    }
+    public function findMaxId($quizId){
+        return $this->createQueryBuilder('q')
+            ->where('q.quiz=:quiz_id')
+            ->setParameter('quiz_id',$quizId)
+            ->orderBy('q.id','DESC')
+            ->setMaxResults(1)
+            ->getQuery()
+            ->getOneOrNullResult()
+            ;
+    }
+
 
     // /**
     //  * @return QuizQuestion[] Returns an array of QuizQuestion objects

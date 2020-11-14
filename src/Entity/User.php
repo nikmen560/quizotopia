@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\UserRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\UserInterface;
@@ -51,6 +53,16 @@ class User implements UserInterface
      *
      */
     private $status;
+
+    /**
+     * @ORM\OneToMany(targetEntity=QuizUser::class, mappedBy="user", orphanRemoval=true)
+     */
+    private $quizUsers;
+
+    public function __construct()
+    {
+        $this->quizUsers = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -145,6 +157,53 @@ class User implements UserInterface
     public function setStatus(bool $status): self
     {
         $this->status = $status;
+
+        return $this;
+    }
+
+    public function getQuizUser(): ?QuizUser
+    {
+        return $this->quizUser;
+    }
+
+    public function setQuizUser(QuizUser $quizUser): self
+    {
+        $this->quizUser = $quizUser;
+
+        // set the owning side of the relation if necessary
+        if ($quizUser->getUser() !== $this) {
+            $quizUser->setUser($this);
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|QuizUser[]
+     */
+    public function getQuizUsers(): Collection
+    {
+        return $this->quizUsers;
+    }
+
+    public function addQuizUser(QuizUser $quizUser): self
+    {
+        if (!$this->quizUsers->contains($quizUser)) {
+            $this->quizUsers[] = $quizUser;
+            $quizUser->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeQuizUser(QuizUser $quizUser): self
+    {
+        if ($this->quizUsers->removeElement($quizUser)) {
+            // set the owning side to null (unless already changed)
+            if ($quizUser->getUser() === $this) {
+                $quizUser->setUser(null);
+            }
+        }
 
         return $this;
     }
