@@ -1,0 +1,10 @@
+{% extends 'admin_base.twig' %}
+
+{% block title %}Hello CreateQuestionController!{% endblock %}
+
+{% block content %}
+    <div>{{ error }}</div>
+    {{ form_start(form) }}
+    <button type="submit">Go</button>
+    {{ form_end(form) }}
+{% endblock %}

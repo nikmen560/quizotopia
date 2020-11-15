@@ -3,7 +3,7 @@
 {% block title %}Hello CreateQuizController!{% endblock %}
 
 {% block content %}
-    <a href="{{ path('create_question') }}" class="btn btn-block btn-outline-dark">Create question</a>
+    <a href="{{ path('initial_create_question') }}" class="btn btn-block btn-outline-dark">Create question</a>
     {{ form_start(CreateQuizForm) }}
     <button class="btn btn-block btn-primary bg-info mt-3" type="submit">Create Quiz</button>
     {{ form_label(CreateQuizForm.quizName) }}
