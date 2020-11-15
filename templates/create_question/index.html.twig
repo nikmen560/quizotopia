@@ -28,12 +28,74 @@
                         </div>
 
                         <div class="form-group input-group">
-                            {{ form_widget(CreateQuestionForm.answer_1,{'attr': {
+                            {{ form_widget(CreateQuestionForm.answer_0,{'attr': {
                                 'class': 'form-control',
                                 'placeholder': "Other answer"}
                             }) }}
 
                         </div>
+                    {% if count>1 %}
+                    <div class="form-group input-group">
+                        {{ form_widget(CreateQuestionForm.answer_1,{'attr': {
+                            'class': 'form-control',
+                            'placeholder': "Other answer"}
+                        }) }}
+
+                    </div>
+                    {% if count>2 %}
+                    <div class="form-group input-group">
+                        {{ form_widget(CreateQuestionForm.answer_2,{'attr': {
+                            'class': 'form-control',
+                            'placeholder': "Other answer"}
+                        }) }}
+
+                    </div>
+                    {% if count>3 %}
+                    <div class="form-group input-group">
+                        {{ form_widget(CreateQuestionForm.answer_3,{'attr': {
+                            'class': 'form-control',
+                            'placeholder': "Other answer"}
+                        }) }}
+
+                    </div>
+                    {% if count>4 %}
+                    <div class="form-group input-group">
+                        {{ form_widget(CreateQuestionForm.answer_4,{'attr': {
+                            'class': 'form-control',
+                            'placeholder': "Other answer"}
+                        }) }}
+
+                    </div>
+                    {% if count>5 %}
+                    <div class="form-group input-group">
+                        {{ form_widget(CreateQuestionForm.answer_5,{'attr': {
+                            'class': 'form-control',
+                            'placeholder': "Other answer"}
+                        }) }}
+
+                    </div>
+                    {% if count>6 %}
+                    <div class="form-group input-group">
+                        {{ form_widget(CreateQuestionForm.answer_6,{'attr': {
+                            'class': 'form-control',
+                            'placeholder': "Other answer"}
+                        }) }}
+                        {% if count>7 %}
+                    </div>
+                    <div class="form-group input-group">
+                        {{ form_widget(CreateQuestionForm.answer_7,{'attr': {
+                            'class': 'form-control',
+                            'placeholder': "Other answer"}
+                        }) }}
+                    </div>
+                        {% endif %}
+                        {% endif %}
+                        {% endif %}
+                        {% endif %}
+                        {% endif %}
+                        {% endif %}
+                        {% endif %}
+                    </div>
                     <button class="btn btn-block btn-primary bg-info mt-3" type="submit">
                        Create
                     </button>
