@@ -36,4 +36,33 @@ class AdminQuizController extends AbstractController
 
         return $this->redirectToRoute('admin_quizes');
     }
+    /**
+     * @Route("/admin/quizes/block/{id}", name="block_quiz")
+     * @param $id
+     */
+
+    public function blockQuiz($id)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $quiz= $em->getRepository(Quiz::class)->find($id);
+        $quiz->setStatus(false);
+        $em->persist($quiz);
+        $em->flush();
+
+        return $this->redirectToRoute('admin_quizes');
+    }
+    /**
+     * @Route("/admin/quizes/unblock/{id}", name="unblock_quiz")
+     * @param $id
+     */
+    public function unblockQuiz($id)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $quiz= $em->getRepository(Quiz::class)->find($id);
+        $quiz->setStatus(true);
+        $em->persist($quiz);
+        $em->flush();
+
+        return $this->redirectToRoute('admin_quizes');
+    }
 }
