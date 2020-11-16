@@ -25,6 +25,9 @@ class CreateQuizController extends AbstractController
         if($form->isSubmitted() && $form->isValid()){
             $quiz->setName($form->get('quizName')->getData());
             $questions=$form->get('quizQuestions')->getData();
+            $quiz->setStatus(true);
+            $currentTime=new \DateTime();
+            $quiz->setCreatedAt($currentTime);
             foreach ($questions as $question){
                 $quizQuestion=new QuizQuestion();
                 $quizQuestion->setQuestion($question);
