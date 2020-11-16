@@ -22,20 +22,26 @@ class UserPositionRepository extends ServiceEntityRepository
     // /**
     //  * @return UserPosition[] Returns an array of UserPosition objects
     //  */
-    /*
-    public function findByExampleField($value)
+
+    public function findByUser($value)
     {
         return $this->createQueryBuilder('u')
-            ->andWhere('u.exampleField = :val')
+            ->andWhere('u.user = :val')
             ->setParameter('val', $value)
             ->orderBy('u.id', 'ASC')
-            ->setMaxResults(10)
+            ->setMaxResults(1)
             ->getQuery()
-            ->getResult()
+            ->getOneOrNullResult()
         ;
     }
-    */
-
+    public function findRating(){
+    return $this->createQueryBuilder('u')
+        ->addorderBy('u.result','DESC')
+        ->addorderBy('u.spendedTime','ASC')
+        ->getQuery()
+        ->getResult()
+        ;
+    }
     /*
     public function findOneBySomeField($value): ?UserPosition
     {

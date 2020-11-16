@@ -10,7 +10,7 @@
             <div class="container-fluid">Incorrect answer(((</div>
         {% endif %}
         {% if status %}
-            <div>End</div>
+            <a class="container-fluid" href="{{ path('user_rating',{"id":quizId, "userId":user.id }) }}">Show Rating</a>
         {% else %}
             <a class="container-fluid" href="{{ path('quiz_player',{"id":qq, "quizId":quizId, }) }}">Next Question</a>
         {% endif %}

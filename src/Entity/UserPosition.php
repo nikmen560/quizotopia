@@ -28,17 +28,17 @@ class UserPosition
      * @ORM\JoinColumn(nullable=false)
      */
     private $quiz;
-
-    /**
-     * @ORM\Column(type="datetime")
-     */
-    private $spendedTime;
-
+    
     /**
      * @ORM\Column(type="integer")
      */
     private $result;
 
+    /**
+     * @ORM\Column(type="dateinterval")
+     */
+    private $spendedTime;
+    
     public function getId(): ?int
     {
         return $this->id;
@@ -68,18 +68,6 @@ class UserPosition
         return $this;
     }
 
-    public function getSpendedTime(): ?\DateTimeInterface
-    {
-        return $this->spendedTime;
-    }
-
-    public function setSpendedTime(\DateTimeInterface $spendedTime): self
-    {
-        $this->spendedTime = $spendedTime;
-
-        return $this;
-    }
-
     public function getResult(): ?int
     {
         return $this->result;
@@ -88,6 +76,18 @@ class UserPosition
     public function setResult(int $result): self
     {
         $this->result = $result;
+
+        return $this;
+    }
+
+    public function getSpendedTime(): ?\DateInterval
+    {
+        return $this->spendedTime;
+    }
+
+    public function setSpendedTime(\DateInterval $spendedTime): self
+    {
+        $this->spendedTime = $spendedTime;
 
         return $this;
     }
