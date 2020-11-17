@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Controller;
 
 use App\Entity\QuizUser;
@@ -17,7 +19,7 @@ class PlayQuizController extends AbstractController
      * @Route("/play/quiz/{id}", name="play_quiz")
      * @param $id
      */
-    public function index($id, QuizRepository $quizRepository,QuizUserRepository $quizUserRepository,UserRepository $userRepository, UserPositionRepository $userPositionRepository): Response
+    public function index(int $id, QuizRepository $quizRepository,QuizUserRepository $quizUserRepository,UserRepository $userRepository, UserPositionRepository $userPositionRepository): Response
     {
         if($quizRepository->find($id)->getStatus()) {
             $user = $userRepository->findByUsername($this->getUser()->getUsername());

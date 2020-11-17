@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Controller;
 
 use App\Entity\Answer;
@@ -40,7 +42,7 @@ class CreateQuestionController extends AbstractController
      * @Route("/create/question/{count}", name="create_question")
      * @param $count
      */
-    public function index(Request $request,$count): Response
+    public function index(Request $request, int $count): Response
     {
         $question=new Question();
         $form = $this->createForm(CreateQuestionFormType::class, $question,[
@@ -54,7 +56,7 @@ class CreateQuestionController extends AbstractController
             $answer->setIstrue(true);
             $entityManager->persist($answer);
             $question->addAnswer($answer);
-            for($i=0;$i<$count;$i++) {
+            for($i=0; $i<$count; $i++) {
                 $answer = new Answer();
                 $answer->setContent($form->get('answer_'.$i)->getData());
                 $answer->setIstrue(false);
