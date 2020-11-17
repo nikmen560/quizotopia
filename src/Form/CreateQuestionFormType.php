@@ -57,6 +57,7 @@ class CreateQuestionFormType extends AbstractType
         $resolver->setDefaults([
             'data_class' => Question::class,
             'count'=>null,
+            'answers' => null
         ]);
     }
 
