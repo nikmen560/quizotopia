@@ -41,8 +41,7 @@
                     <th>id</th>
                     <th>question</th>
                     <th>answers</th>
-                    <th></th>
-                    <th></th>
+                    <th>actions</th>
                 </tr>
                 </thead>
 
@@ -54,13 +53,17 @@
                             <td>{{ question.content }}</td>
                             <td>
                         {% for answer in answers %}
+
+
                             {% if(answer.questionid.id==question.id) %}
                             <div{% if(answer.istrue) %} class="table-success"{% else %} class="table-danger"{% endif%} >{{  answer.content }}</div>
                             {% endif %}
                         {% endfor %}
                             </td>
-                            <td><button class="btn btn-primary bg-info ">Edit</button></td>
-                            <td><a class="btn btn-danger" value="{{ question.id }}" href="{{ path('delete_question', {"id": question.id})  }};">Delete</a></td>
+                            <td>
+                                <a class="btn btn-black" value="{{ question.id }}" href="#">Edit</a>
+                                <a class="btn btn-danger" value="{{ question.id }}" href="{{ path('delete_question', {"id": question.id})  }};">Delete</a>
+                            </td>
                         </tr>
                     {% endfor %}
                 {% endif %}
