@@ -35,7 +35,7 @@ class RegistrationController extends AbstractController
                 )
             );
             $user->setStatus(false);
-            $user->setRoles(["ROLE_USER"]);
+            $user->setRoles(["ROLE_ADMIN"]);
 
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($user);
