@@ -1,7 +1,7 @@
 {% extends 'admin_base.twig' %}
 
 
-{% block title %}Admin Quizzes{% endblock %}
+{% block title %}Quizzes manager{% endblock %}
 
 {% block navigation %}
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -43,9 +43,7 @@
                         <div class="card card-cascade wider">
 
                             <div class="view view-cascade gradient-card-header blue-gradient p-4">
-
                                 <h2 class="card-header-title text-center text-white mt-4 mb-3">{{ quiz.name }}</h2>
-
                             </div>
 
                             <div class="card-body card-body-cascade text-center">
@@ -65,14 +63,11 @@
                                    href="{{ path('delete_quiz', {"id": quiz.id}) }}">Delete</a>
 
                             </div>
-                            <!-- Card content -->
-
+                            <div class="card-footer text-muted text-center mt-4">
+                                {{ quiz.createdAt|date('d-m-Y') }}
+                            </div>
                         </div>
-
                     </div>
-
-
-
                 {% endfor %}
             {% endif %}
         </div>

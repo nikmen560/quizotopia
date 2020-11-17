@@ -1,65 +1,64 @@
 {% extends 'admin_base.twig' %}
 
-{% block title %}Hello CreateQuizController!{% endblock %}
+{% block title %}Quiz creation{% endblock %}
 
 {% block content %}
-    <a href="{{ path('initial_create_question') }}" class="btn btn-block btn-outline-dark">Create question</a>
-    {{ form_start(CreateQuizForm) }}
-    <button class="btn btn-block btn-primary bg-info mt-3" type="submit">Create Quiz</button>
-    {{ form_label(CreateQuizForm.quizName) }}
-    {{ form_widget(CreateQuizForm.quizName) }}
-    <button class="btn btn-block btn-primary btn-hide">Choose questions</button>
 
 
+    <div class="col-12 col-lg-4 col-md-4">
+        {# <div class="form-group input-group"> #}
+        {{ form_start(CreateQuizForm) }}
 
-<div class="table-hide" style="display: none;">
 
-    <table class="table" id="q-table">
+        <div class="btn-group" role="group" aria-label="Basic example">
+            <button class="btn btn-primary bg-info " type="submit">Create Quiz</button>
+            <button class="btn btn-primary btn-hide">Choose questions</button>
 
-        <thead>
-        <tr>
-            <th></th>
-            <th>question</th>
-        </tr>
-        </thead>
-        <tbody>
-        {% for question in CreateQuizForm.quizQuestions  %}
-            <tr>
-                <td>{{ form_widget(question) }}</td>
-                <td>{{ form_label(question) }}</td>
-            </tr>
-        {% endfor %}
+        </div>
+        {{ form_label(CreateQuizForm.quizName) }}
+        {{ form_widget(CreateQuizForm.quizName) }}
+        <div class="table-hide" style="visibility: hidden; ">
 
-        </tbody>
-    </table>
+            <table class="table" id="q-table">
+                <thead>
+                <tr>
+                    <th></th>
+                    <th>question</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for question in CreateQuizForm.quizQuestions %}
+                    <tr>
+                        <td>{{ form_widget(question) }}</td>
+                        <td>{{ form_label(question) }}</td>
+                    </tr>
+                {% endfor %}
 
+                </tbody>
+            </table>
+        </div>
+        {{ form_end(CreateQuizForm) }}
+        {# </div> #}
     </div>
-    {{ form_end(CreateQuizForm) }}
-    {#  % endblock %}#}
-
-{#{% block stylesheets %}#}
-
-{#    <link rel="stylesheet" href="{{ asset('/public/assets/framework/bootstrap/css/bootstrap.min.css') }}">#}
-{#    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.css">#}
-{#    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.22/css/dataTables.bootstrap4.min.css">#}
-
-{#{% endblock %}#}
-{#{% block javascripts %}#}
-
-{#    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>#}
-{#    <script src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js"></script>#}
-{#    <script src="https://cdn.datatables.net/1.10.22/js/dataTables.bootstrap4.min.js"></script>#}
 
     <script>
+
         $(document).ready(function () {
             $('#q-table').DataTable({
-                "paging":false,
+                "paging": false,
                 "ordering": false,
-                "info":     false,})
-                $('.btn-hide').click(function(){
-                    $('.table-hide').slideToggle(300);
-                    return false;
-                });
+                "info": false,
+            });
+            $('.btn-hide').click(function () {
+                if ($('.table-hide').css('visibility') === 'hidden')
+                    $('.table-hide').css('visibility', 'visible');
+                else
+                    $('.table-hide').css('visibility', 'hidden');
+            });
+            // $('.btn-hide').click(function () {
+            //     $('.table-hide').slideToggle(300);
+            //     return false;
+            // });
         });
 
     </script>
