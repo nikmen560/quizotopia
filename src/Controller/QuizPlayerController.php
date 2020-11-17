@@ -68,25 +68,29 @@ class QuizPlayerController extends AbstractController
                 $status=false;
                 if($quizQuestionRepository->findMaxId($quizId)->getId()==$id){
                     $status=true;
+                    $playingUser->setCurrentQuestion(-1);
                 }
                 $result=$playingUser->getResult();
-                $result++;
+                $isTrue = $answerRepository->find($answerId)->getIstrue();
+                if($isTrue) {
+                    $result++;
+                }
                 $playingUser->setResult($result);
                 $em=$this->getDoctrine()->getManager();
                 $em->persist($playingUser);
                 $em->flush();
-                $isTrue = $answerRepository->find($answerId)->getIstrue();
                 return $this->render('quiz_player/check.html.twig', [
                     'quizId' => $quizId,
                     'isTrue' => $isTrue,
                     'qq' => $id,
-                    'status'=>$status
+                    'status'=>$status,
+                    'user'=>$user,
                 ]);
             }
             else {
                 return $this->redirectToRoute('quiz_player', [
                     'id' => $playingUser->getCurrentQuestion(),
-                    'quizId' => $playingUser->getQuiz()->getId()
+                    'quizId' => $playingUser->getQuiz()->getId(),
                 ]);
             }
         }

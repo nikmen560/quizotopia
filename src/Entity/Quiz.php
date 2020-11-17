@@ -44,10 +44,16 @@ class Quiz
      */
     private $status;
 
+    /**
+     * @ORM\OneToMany(targetEntity=UserPosition::class, mappedBy="quiz", orphanRemoval=true)
+     */
+    private $userPositions;
+
     public function __construct()
     {
         $this->quizQuestions = new ArrayCollection();
         $this->quizUsers = new ArrayCollection();
+        $this->userPositions = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -147,6 +153,36 @@ class Quiz
     public function setStatus(bool $status): self
     {
         $this->status = $status;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|UserPosition[]
+     */
+    public function getUserPositions(): Collection
+    {
+        return $this->userPositions;
+    }
+
+    public function addUserPosition(UserPosition $userPosition): self
+    {
+        if (!$this->userPositions->contains($userPosition)) {
+            $this->userPositions[] = $userPosition;
+            $userPosition->setQuiz($this);
+        }
+
+        return $this;
+    }
+
+    public function removeUserPosition(UserPosition $userPosition): self
+    {
+        if ($this->userPositions->removeElement($userPosition)) {
+            // set the owning side to null (unless already changed)
+            if ($userPosition->getQuiz() === $this) {
+                $userPosition->setQuiz(null);
+            }
+        }
 
         return $this;
     }
