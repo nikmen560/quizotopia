@@ -22,7 +22,7 @@ class PlayQuizController extends AbstractController
         if($quizRepository->find($id)->getStatus()) {
             $user = $userRepository->findByUsername($this->getUser()->getUsername());
             $playingUser = $quizUserRepository->findByUser($user);
-            if ($userPositionRepository->findByUser($user) == null) {
+            if ($userPositionRepository->findByUser($user) == null|| $userPositionRepository->findByUser($user)->getQuiz()->getId()!=$id) {
                 if ($playingUser == null) {
                     $currentTime = new \DateTime();
                     $quiz = $quizRepository->find($id);
