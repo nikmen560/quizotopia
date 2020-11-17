@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Controller;
 
 use App\Entity\UserPosition;
@@ -51,9 +53,9 @@ class UserRatingController extends AbstractController
                 }
 
             } else {
-                $userInRating=$userPositionRepository->findByUser($user);
+                $userInRating=$userPositionRepository->findByUser($user,$id);
                 if($userInRating!=null){
-                    $userRating=$userPositionRepository->findRating();
+                    $userRating=$userPositionRepository->findRating($id);
                     return $this->render('user_rating/index.html.twig',
                     [
                         'userInRating'=>$userInRating,

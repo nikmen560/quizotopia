@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Controller;
 
 use App\Entity\QuizQuestion;
@@ -19,7 +21,7 @@ class QuizPlayerController extends AbstractController
      * @param $quizId
      */
 
-    public function index($id, $quizId,QuizQuestionRepository $quizQuestionRepository, UserRepository $userRepository, QuizUserRepository $quizUserRepository,$firstId=null): Response
+    public function index(int $id, int $quizId,QuizQuestionRepository $quizQuestionRepository, UserRepository $userRepository, QuizUserRepository $quizUserRepository,$firstId=null): Response
     {
         $user=$userRepository->findByUsername($this->getUser()->getUsername());
         $playingUser=$quizUserRepository->findByUser($user);
@@ -59,7 +61,7 @@ class QuizPlayerController extends AbstractController
      * @param $quizId
      * @param $answerId
      */
-    public function check($id, $quizId, $answerId, AnswerRepository $answerRepository,QuizUserRepository $quizUserRepository,UserRepository $userRepository, QuizQuestionRepository $quizQuestionRepository):Response
+    public function check(int $id, int $quizId, int $answerId, AnswerRepository $answerRepository,QuizUserRepository $quizUserRepository,UserRepository $userRepository, QuizQuestionRepository $quizQuestionRepository):Response
     {
         $user=$userRepository->findByUsername($this->getUser()->getUsername());
         $playingUser=$quizUserRepository->findByUser($user);
