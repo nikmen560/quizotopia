@@ -1,7 +1,23 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello QuizesListController!{% endblock %}
+{% block title %}Quizzes list{% endblock %}
 
+{% block navigation %}
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+                <a class="nav-link" href="{{ path('mainpage') }}">Home</a>
+            </li>
+            <li class="nav-item active">
+                <a class="nav-link" href="{{ path('quizzes') }}">Quizzes</a>
+            </li>
+            <li class="nav-item">
+            </li>
+        </ul>
+        <a class="nav-link btn btn-outline-info" href="{{ path('app_logout') }}">logout</a>
+    </div>
+    </nav>
+{% endblock %}
 {% block content %}
     <div class="container mt-4 mb-4">
         <div class="row">

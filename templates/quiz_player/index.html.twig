@@ -1,10 +1,42 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello QuizPlayerController!{% endblock %}
-
+{% block title %}Quiz{% endblock %}
+{% block navigation %}
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+                <a class="nav-link" href="{{ path('mainpage') }}">Home</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{{ path('quizzes') }}">Quizzes</a>
+            </li>
+            <a class="nav-link btn btn-outline-info" href="{{ path('app_logout') }}">logout</a>
+        </ul>
+    </div>
+{% endblock %}
 {% block content %}
-    <div class="container-fluid">{{ qq.question.content}} </div>
-    {% for answer in answers %}
-        <a class="container-fluid" href="{{ path('quiz_check',{"id":qq.id, "quizId":quizId, "answerId":answer.id}) }}">{{ answer.content }}</a>
-    {% endfor %}
+
+    <div class="container-fluid">
+        <div class="row no-gutters justify-content-center">
+            <div class="col-12 col-lg-4 col-md-4" style="margin: 12% auto" >
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+
+                            <h3> {{ qq.question.content }}</h3>
+                        </div>
+                        <div class="modal-body">
+                            <ul class="list-group">
+                            {% for answer in answers %}
+                                <a class="list-group-item list-group-item-action"
+                                   href="{{ path('quiz_check',{"id":qq.id, "quizId":quizId, "answerId":answer.id}) }}">{{ answer.content }}</a>
+
+                            {% endfor %}
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 {% endblock %}

@@ -1,10 +1,39 @@
 {% extends 'admin_base.twig' %}
 
-{% block title %}Hello CreateQuestionController!{% endblock %}
+{% block title %}Answer amount{% endblock %}
+
+{% block navigation %}
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+                <a class="nav-link" href="{{ path('mainpage') }}">Home</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{{ path('quizzes') }}">Quizzes</a>
+            </li>
+            <li class="nav-item">
+            </li>
+        </ul>
+        <a class="nav-link btn btn-outline-info" href="{{ path('app_logout') }}">logout</a>
+    </div>
+    </nav>
+{% endblock %}
 
 {% block content %}
+<div class="container-fluid">
+    <div class="row no-gutters justify-content-center">
+        <div class="col-12 col-lg-4 col-md-4 ">
+            <div class="form-login shadow-lg border" style="padding: 30px; margin: 30% auto">
     <div>{{ error }}</div>
+                <h1 class="h3 mb-4 font-weight-normal text-center ">Amount of answers</h1>
     {{ form_start(form) }}
-    <button type="submit">Go</button>
+                {{ form_widget(form.answerCount,{'attr': {
+                    'class': 'form-control',
+                    'placeholder': "choose amount of answers"}}) }}
+                <button class="btn btn-info btn-block my-4" type="submit">Go</button>
     {{ form_end(form) }}
+            </div>
+        </div>
+    </div>
+</div>
 {% endblock %}

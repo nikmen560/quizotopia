@@ -1,18 +1,42 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hi check{% endblock %}
+{% block title %}Answer validation{% endblock %}
+{% block navigation %}
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+                <a class="nav-link" href="{{ path('mainpage') }}">Home</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{{ path('quizzes') }}">Quizzes</a>
+            </li>
+            <a class="nav-link btn btn-outline-info" href="{{ path('app_logout') }}">logout</a>
+        </ul>
+    </div>
+{% endblock %}
+        <div class="col-12 col-lg-4 col-md-4" style="margin: 12% auto">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        {% if isTrue %}
+                            <h3> Correct answer! </h3>
+                        {% else %}
+                            <h3>Answer is incorrect</h3>
+                        {% endif %}
+                    </div>
+                    <ul class="list-group">
+                    {% if status %}
+                        <a class="list-group-item list-group-item-action" href="{{ path('user_rating',{"id":quizId, "userId":user.id }) }}">Show Rating</a>
+                    {% else %}
+                        <a class="list-group-item list-group-item-action" href="{{ path('quiz_player',{"id":qq, "quizId":quizId, }) }}">Next Question</a>
+                    {% endif %}
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
 
-{% block content %}
-    <div class="container-fluid">
-        {% if isTrue %}
-            <div class="container-fluid">Correct answer!</div>
-        {% else %}
-            <div class="container-fluid">Incorrect answer(((</div>
-        {% endif %}
-        {% if status %}
-            <a class="container-fluid" href="{{ path('user_rating',{"id":quizId, "userId":user.id }) }}">Show Rating</a>
-        {% else %}
-            <a class="container-fluid" href="{{ path('quiz_player',{"id":qq, "quizId":quizId, }) }}">Next Question</a>
-        {% endif %}
+
+
     </div>
 {% endblock %}
