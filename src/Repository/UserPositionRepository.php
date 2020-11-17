@@ -25,10 +25,12 @@ class UserPositionRepository extends ServiceEntityRepository
     //  * @return UserPosition[] Returns an array of UserPosition objects
     //  */
 
-    public function findByUser($value)
+    public function findByUser($value,$nextValue)
     {
         return $this->createQueryBuilder('u')
             ->andWhere('u.user = :val')
+            ->andWhere('u.quiz = :val1')
+            ->setParameter('val1',$nextValue)
             ->setParameter('val', $value)
             ->orderBy('u.id', 'ASC')
             ->setMaxResults(1)
@@ -36,8 +38,10 @@ class UserPositionRepository extends ServiceEntityRepository
             ->getOneOrNullResult()
         ;
     }
-    public function findRating(){
+    public function findRating($value){
     return $this->createQueryBuilder('u')
+        ->andWhere('u.quiz = :val')
+        ->setParameter('val', $value)
         ->addorderBy('u.result','DESC')
         ->addorderBy('u.spendedTime','ASC')
         ->getQuery()
