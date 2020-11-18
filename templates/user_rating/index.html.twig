@@ -18,23 +18,29 @@
     </nav>
 {% endblock %}
 {% block content %}
-    <style>
-        .example-wrapper {
-            margin: 1em auto;
-            max-width: 800px;
-            width: 95%;
-            font: 18px/1.5 sans-serif;
-        }
+<table class="table table-striped table-bordered" id="table-questions">
+    <thead>
+    <tr>
+        <th scope="col">#</th>
+        <th>Username</th>
+        <th>result</th>
+    </tr>
+    </thead>
 
-        .example-wrapper code {
-            background: #F5F5F5;
-            padding: 2px 6px;
-        }
-    </style>
-
-    <div class="example-wrapper">
+    <tbody>
         {% for user in rating %}
-            <div class="container-fluid">{{ user.user.username }}</div>
+            <tr>
+                {% set count = count + 1 %}
+                <td>{{ count }}</td>
+                <td>{{ user.user.username }}</td>
+                <td>{{ user.result }}</td>
+            </tr>
         {% endfor %}
-    </div>
+        <tr>
+            <td>{{ place }}</td>
+            <td>{{ userInRating.user.username }}</td>
+            <td>{{ userInRating.result }}</td>
+        </tr>
+    </tbody>
+</table>
 {% endblock %}

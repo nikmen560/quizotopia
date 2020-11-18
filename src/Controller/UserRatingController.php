@@ -55,11 +55,28 @@ class UserRatingController extends AbstractController
             } else {
                 $userInRating=$userPositionRepository->findByUser($user,$id);
                 if($userInRating!=null){
-                    $userRating=$userPositionRepository->findRating($id);
+                    $fullUserRating=$userPositionRepository->findRating($id);
+                    $userRating=[];
+                    $userPlace=0;
+                    for($i=0;$i<count($fullUserRating);$i++){
+                        if($i==3){
+                            break;
+                        }
+                        $userRating[]=$fullUserRating[$i];
+                    }
+                    foreach($fullUserRating as $user){
+                        $userPlace++;
+                        if($user->getId()==$userInRating->getId()){
+                            break;
+                        }
+                    }
+                    $count=0;
                     return $this->render('user_rating/index.html.twig',
                     [
-                        'userInRating'=>$userInRating,
-                       'rating'=>$userRating,
+                        'userInRating'=> $userInRating,
+                        'rating'=> $userRating,
+                        'count'=> $count,
+                        'place'=> $userPlace,
                     ]);
                 }
                 else{

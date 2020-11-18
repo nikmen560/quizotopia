@@ -40,6 +40,10 @@ class QuizPlayerController extends AbstractController
                 ]);
             }
             $answers = $nextQuestion->getQuestion()->getAnswers();
+            $correctAnswer = $answers[0];
+            $correctAnswerPlace = mt_rand(0,count($answers)-1);
+            $answers[0]=$answers[$correctAnswerPlace];
+            $answers[$correctAnswerPlace]=$correctAnswer;
             $playingUser->setCurrentQuestion($nextQuestion->getId());
             $em=$this->getDoctrine()->getManager();
             $em->persist($playingUser);
