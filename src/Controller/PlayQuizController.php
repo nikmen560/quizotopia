@@ -26,6 +26,9 @@ class PlayQuizController extends AbstractController
             $playingUser = $quizUserRepository->findByUser($user);
             if ($userPositionRepository->findByUser($user,$id)==null) {
                 if ($playingUser == null) {
+
+                    $user->setStatus(true);
+
                     $currentTime = new \DateTime();
                     $quiz = $quizRepository->find($id);
                     $firstQuestion = $quiz->getQuizQuestions()[0];
@@ -42,15 +45,18 @@ class PlayQuizController extends AbstractController
                         'id' => $firstQuestion->getId(),
                         'quizId' => $id,
                         'firstId' => $firstQuestion->getId(),
+
                     ]);
                     return $response;
                 } else {
                     return $this->redirectToRoute('quiz_player', [
                         'id' => $playingUser->getCurrentQuestion(),
                         'quizId' => $playingUser->getQuiz()->getId(),
+                        'user'=> $user,
                     ]);
                 }
             } else {
+                $user->setStatus(false);
                 return $this->redirectToRoute('user_rating',[
                     'id'=>$id,
                     'userId'=>$user->getId(),
