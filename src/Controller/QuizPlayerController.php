@@ -8,6 +8,7 @@ use App\Entity\QuizQuestion;
 use App\Repository\AnswerRepository;
 use App\Repository\QuizQuestionRepository;
 use App\Repository\QuizUserRepository;
+use App\Repository\UserPositionRepository;
 use App\Repository\UserRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
@@ -21,7 +22,7 @@ class QuizPlayerController extends AbstractController
      * @param $quizId
      */
 
-    public function index(int $id, int $quizId,QuizQuestionRepository $quizQuestionRepository, UserRepository $userRepository, QuizUserRepository $quizUserRepository,$firstId=null): Response
+    public function index(int $id, int $quizId,QuizQuestionRepository $quizQuestionRepository, UserRepository $userRepository, QuizUserRepository $quizUserRepository): Response
     {
         $user=$userRepository->findByUsername($this->getUser()->getUsername());
         $playingUser=$quizUserRepository->findByUser($user);
