@@ -10,32 +10,26 @@
             <li class="nav-item">
                 <a class="nav-link" href="{{ path('quizzes') }}">Quizzes</a>
             </li>
-            <a class="nav-link btn btn-outline-info" href="{{ path('app_logout') }}">logout</a>
+
         </ul>
+        <a class="nav-link btn btn-outline-info" href="{{ path('app_logout') }}">logout</a>
     </div>
 {% endblock %}
 {% block content %}
 
-    <div class="container-fluid">
-        <div class="row no-gutters justify-content-center">
-            <div class="col-12 col-lg-4 col-md-4" style="margin: 12% auto" >
-                <div class="modal-dialog">
-                    <div class="modal-content">
-                        <div class="modal-header">
-
-                            <h3> {{ qq.question.content }}</h3>
-                        </div>
-                        <div class="modal-body">
-                            <ul class="list-group">
-                            {% for answer in answers %}
-                                <a class="list-group-item list-group-item-action"
-                                   href="{{ path('quiz_check',{"id":qq.id, "quizId":quizId, "answerId":answer.id}) }}">{{ answer.content }}</a>
-
-                            {% endfor %}
-                            </ul>
-                        </div>
-                    </div>
+    <div class="col-12 col-lg-4 col-md-4 ">
+        <div class="" style="padding: 30px; margin: 30% auto">
+            <div class="card" >
+                <div class="card-body">
+                    <h5 class="card-title"></h5>
+                    <p class="card-text">{{ qq.question.content }}</p>
                 </div>
+                <ul class="list-group list-group-flush">
+                    {% for answer in answers %}
+                        <a class="list-group-item list-group-item-action"
+                           href="{{ path('quiz_check',{"id":qq.id, "quizId":quizId, "answerId":answer.id}) }}">{{ answer.content }}</a>
+                    {% endfor %}
+                </ul>
             </div>
         </div>
     </div>

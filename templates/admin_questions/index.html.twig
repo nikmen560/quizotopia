@@ -73,7 +73,9 @@
 </div>
     <script>
         $(document).ready(function () {
-            $('#table-questions').DataTable();
+            $('#table-questions').DataTable({
+                responsive: true
+            });
         });
     </script>
 {% endblock %}
