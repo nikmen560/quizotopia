@@ -74,6 +74,7 @@ class QuizPlayerController extends AbstractController
             if ($playingUser->getCurrentQuestion() == $id && $playingUser->getQuiz()->getId() == $quizId) {
                 $status=false;
                 if($quizQuestionRepository->findMaxId($quizId)->getId()==$id){
+                    $user->setStatus(false);
                     $status=true;
                     $playingUser->setCurrentQuestion(-1);
                 }

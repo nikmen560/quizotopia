@@ -39,7 +39,22 @@
                                 <h2 class="card-header-title text-center text-white mt-4 mb-3">{{ quiz.name }}</h2>
                             </div>
                             <div class="card-body card-body-cascade text-center">
-                                <a class="btn btn-unique" value="{{ quiz.id }}" href="{{ path('play_quiz', {"id": quiz.id}) }}">Play</a>
+                                {% if quiz.status %}
+                                    <a class="btn btn-unique" value="{{ quiz.id }}"
+                                       href="{{ path('play_quiz', {"id": quiz.id}) }}">Play</a>
+                                {% else %}
+                                    <a class="btn btn-info disabled" value="{{ quiz.id }}"
+                                       href="{{ path('play_quiz', {"id": quiz.id}) }}">Play</a>
+                                {% endif %}
+                            </div>
+                            <div class="card-footer text-muted text-center mt-4">
+                                <div>
+                                    {% if quiz.status %}
+                                        active
+                                    {% else %}
+                                        inactive
+                                    {% endif %}
+                                </div>
                             </div>
                         </div>
                     </div>
