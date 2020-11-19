@@ -6,6 +6,8 @@ use App\Entity\Answer;
 use App\Form\AnswerCountFormType;
 use App\Form\CreateQuestionFormType;
 use App\Entity\Question;
+use App\Form\EditQuestionFormType;
+use App\Repository\QuestionRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -19,40 +21,36 @@ class EditQuestionController extends AbstractController
      * @param $id
      *
      */
-    public function index(Request $request, $id): Response
+    public function index(Request $request, int $id,QuestionRepository $questionRepository): Response
     {
-        $question = $this->getDoctrine()->getRepository(Question::class)->find($id);
-        $answers = $question->getAnswers();
-        $count = count($answers);
-        $form = $this->createForm(CreateQuestionFormType::class, $question, [
-            'count' => $count,
-            'answers' => $answers
+        $question=$questionRepository->find($id);
+        $answers=$question->getAnswers();
+        $answersContent=[];
+        foreach ($answers as $answer){
+            $answersContent[]=$answer->getContent();
+        }
+        $form=$this->createForm(EditQuestionFormType::class,$question,[
+            'count'=>count($answers),
+            'question'=>$question->getContent(),
+            'answers'=>$answersContent,
         ]);
         $form->handleRequest($request);
-
-        if ($form->isSubmitted() && $form->isValid()) {
-
-//            foreach ($answers as $answer) {
-
-                $entityManager = $this->getDoctrine()->getManager();
-
-//                $answer->setIstrue(true);
-//                $question->addAnswer($answer);
-//
-//                for ($i = 1; $i < $count; $i++) {
-//                    $answer = new Answer();
-//                    $answer = $this->getDoctrine()->getRepository(Answer::class)->findBy(array('question_id' => $id)[$i]);
-//                    $question->addAnswer($answer);
-//                }
-//            }
+        if($form->isSubmitted()&&$form->isValid()){
+            $entityManager=$this->getDoctrine()->getManager();
+            $question->setContent($form->get('content')->getData());
+            $answers[0]->setContent($form->get('correct_answer')->getData());
+            for($i=1;$i<count($answers);$i++){
+                $answers[$i]->setContent($form->get('answer_'.$i)->getData());
+            }
+            $entityManager->persist($question);
             $entityManager->flush();
-
             return $this->redirectToRoute('admin_questions');
         }
-        return $this->render('edit_question/index.html.twig', [
-            'CreateQuestionForm' => $form->createView(),
-            'count' => $count,
-            'answers' => $answers
+        return $this->render('edit_question/index.html.twig',[
+           'form'=>$form->createView(),
+            'count'=>count($answers)-1,
+            'question'=>$question->getContent(),
+            'answers'=>$answersContent
         ]);
     }
 }
