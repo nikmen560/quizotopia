@@ -61,8 +61,8 @@
                         {% endfor %}
                             </td>
                             <td>
-                                <a class="btn btn-black" value="{{ question.id }}" href="#">Edit</a>
-                                <a class="btn btn-danger" value="{{ question.id }}" href="{{ path('delete_question', {"id": question.id})  }};">Delete</a>
+                                <a class="btn btn-black" value="{{ question.id }}" href="{{ path('edit_question',{'id':question.id}) }}">Edit</a>
+                                <a class="btn btn-danger" value="{{ question.id }}" href="{{ path('delete_question', {"id": question.id})  }}">Delete</a>
                             </td>
                         </tr>
                     {% endfor %}

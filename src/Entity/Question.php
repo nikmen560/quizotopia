@@ -87,10 +87,10 @@ class Question
 
         return $this;
     }
-    public function getQuizQuestion():QuizQuestion{
-        return $this->quizQuestion;
+    public function removeAllAnswers(): self
+    {
+        $this->answers=new ArrayCollection();
     }
-
     /**
      * @return Collection|QuizQuestion[]
      */
