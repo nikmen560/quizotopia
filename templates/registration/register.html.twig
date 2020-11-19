@@ -24,6 +24,10 @@
                         <div class="alert alert-danger">
                             {{ form_errors(registrationForm.username) }}
                         </div>
+                    {% elseif form_errors(registrationForm.plainPassword) %}
+                        <div class="alert alert-danger">
+                            {{ form_errors(registrationForm.plainPassword) }}
+                        </div>
                     {% endif %}
                     <div class="form-group input-group">
                         <div class="input-group-prepend">
