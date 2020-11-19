@@ -48,6 +48,29 @@ class UserPositionRepository extends ServiceEntityRepository
         ->getResult()
         ;
     }
+    public function findLeaders(){
+        return $this->createQueryBuilder('u')
+            ->select('u')
+            ->leftJoin('App\Entity\UserPosition',
+                'b',
+                'WITH',
+                'u.quiz=b.quiz AND u.result<b.result')
+            ->where('b.result IS NULL')
+            ->where('b.spendedTime is NULL')
+            ->addOrderBy('u.quiz','ASC')
+            ->addOrderBy('u.spendedTime','ASC')
+            ->getQuery()
+            ->getResult()
+            ;
+    }
+    public function findUserCount(){
+        return $this->createQueryBuilder('u')
+            ->select('count(u)')
+            ->groupBy('u.quiz')
+            ->getQuery()
+            ->getResult()
+            ;
+    }
     /*
     public function findOneBySomeField($value): ?UserPosition
     {

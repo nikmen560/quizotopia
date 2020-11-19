@@ -46,6 +46,8 @@
                                     <a class="btn btn-info disabled" value="{{ quiz.id }}"
                                        href="{{ path('play_quiz', {"id": quiz.id}) }}">Play</a>
                                 {% endif %}
+                                    <div>{{ quiz.leader }}</div>
+                                    <div>{{ quiz.count }}</div>
                             </div>
                             <div class="card-footer text-muted text-center mt-4">
                                 <div>
