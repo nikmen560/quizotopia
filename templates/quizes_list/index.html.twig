@@ -37,6 +37,7 @@
                         <div class="card card-cascade wider">
                             <div class="view view-cascade gradient-card-header blue-gradient p-4">
                                 <h2 class="card-header-title text-center text-white mt-4 mb-3">{{ quiz.name }}</h2>
+                                <p class="card-header-subtitle mb-0">   </p>
                             </div>
                             <div class="card-body card-body-cascade text-center">
                                 {% if quiz.status %}
@@ -46,16 +47,21 @@
                                     <a class="btn btn-info disabled" value="{{ quiz.id }}"
                                        href="{{ path('play_quiz', {"id": quiz.id}) }}">Play</a>
                                 {% endif %}
-                                    <div>{{ quiz.leader }}</div>
-                                    <div>{{ quiz.count }}</div>
                             </div>
                             <div class="card-footer text-muted text-center mt-4">
-                                <div>
+                                <div class="float-left">
                                     {% if quiz.status %}
-                                        active
+                                        <i class="fa fa-lock-open pr-1"> </i>
                                     {% else %}
-                                        inactive
+                                        <i class="fa fa-lock pr-1"> </i>
                                     {% endif %}
+                                </div>
+                                <div class="float-right">
+                                    <i class="fa fa-user pr-1"> </i>
+                                    {{ quiz.count }}
+                                </div>
+                                <div>
+                                    <i class="fa fa-trophy pr-1"> </i> {{ quiz.leader }}
                                 </div>
                             </div>
                         </div>
@@ -64,6 +70,4 @@
             {% endif %}
         </div>
     </div>
-
-
 {% endblock %}
