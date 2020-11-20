@@ -5,6 +5,9 @@ declare(strict_types=1);
 namespace App\Controller;
 
 use App\Entity\Quiz;
+use App\Entity\QuizQuestion;
+use App\Repository\QuestionRepository;
+use App\Repository\QuizQuestionRepository;
 use App\Repository\QuizRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -16,11 +19,13 @@ class AdminQuizController extends AbstractController
     /**
      * @Route("/admin/quizes", name="admin_quizes")
      */
-    public function index(QuizRepository $quizRepository, Request $request): Response
+    public function index(QuizRepository $quizRepository, QuizQuestionRepository $quizQuestionRepository, Request $request): Response
     {
+        $quizQuestions = $quizQuestionRepository->findAll();
         $quizzes = $quizRepository->findAll();
         return $this->render('admin_quiz/index.html.twig', [
             'quizzes' => $quizzes,
+            'quizQuestions' => $quizQuestions
         ]);
     }
     /**

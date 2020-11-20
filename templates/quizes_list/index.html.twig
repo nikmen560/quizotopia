@@ -18,8 +18,9 @@
                 <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink-333" data-toggle="dropdown"
                    aria-haspopup="true" aria-expanded="false">
                     <i class="fa fa-user"></i>
+                    {{ user }}
                 </a>
-                <div class="dropdown-menu dropdown-menu-right dropdown-default"
+                <div class="dropdown-menu"
                      aria-labelledby="navbarDropdownMenuLink-333">
                     <a class="dropdown-item" href="{{ path('app_logout') }}">logout</a>
                 </div>
@@ -29,41 +30,50 @@
     </nav>
 {% endblock %}
 {% block content %}
-    <div class="container mt-4 mb-4">
-        <div class="row">
-            {% if quizzes %}
-                {% for quiz in quizzes %}
-                    <div class="col-sm-4 mb-4">
-                        <div class="card card-cascade wider">
-                            <div class="view view-cascade gradient-card-header blue-gradient p-4">
-                                <h2 class="card-header-title text-center text-white mt-4 mb-3">{{ quiz.name }}</h2>
-                            </div>
-                            <div class="card-body card-body-cascade text-center">
-                                {% if quiz.status %}
-                                    <a class="btn btn-unique" value="{{ quiz.id }}"
-                                       href="{{ path('play_quiz', {"id": quiz.id}) }}">Play</a>
-                                {% else %}
-                                    <a class="btn btn-info disabled" value="{{ quiz.id }}"
-                                       href="{{ path('play_quiz', {"id": quiz.id}) }}">Play</a>
-                                {% endif %}
-                                    <div>{{ quiz.leader }}</div>
-                                    <div>{{ quiz.count }}</div>
-                            </div>
-                            <div class="card-footer text-muted text-center mt-4">
-                                <div>
+        <div class="container mt-4 mb-4">
+            <div class="row">
+                {% if quizzes %}
+                    {% for quiz in  quizzes %}
+                        <div class="col-sm-4 mb-4">
+                            <div class="card card-cascade wider">
+                                <div class="view view-cascade gradient-card-header blue-gradient p-4">
+                                    <h2 class="card-header-title text-center text-white mt-4 mb-3">{{ quiz.name }}</h2>
+                                    <p class="card-header-subtitle mb-0"></p>
+                                </div>
+                                <div class="card-body card-body-cascade text-center">
                                     {% if quiz.status %}
-                                        active
+                                        <a class="btn btn-unique" value="{{ quiz.id }}"
+                                           href="{{ path('play_quiz', {"id": quiz.id}) }}">Play</a>
                                     {% else %}
-                                        inactive
+                                        <a class="btn btn-info disabled" value="{{ quiz.id }}"
+                                           href="{{ path('play_quiz', {"id": quiz.id}) }}">Play</a>
                                     {% endif %}
+                                </div>
+                                <div class="card-footer text-muted text-center mt-4">
+                                    <div class="float-left">
+                                        {% if quiz.status %}
+                                            <i class="fa fa-lock-open pr-1"> </i>
+                                        {% else %}
+                                            <i class="fa fa-lock pr-1"> </i>
+                                        {% endif %}
+                                    </div>
+                                    <div class="float-right">
+                                        <i class="fa fa-user pr-1"> </i>
+                                        {{ quiz.count }}
+                                    </div>
+                                    <div>
+                                        <i class="fa fa-trophy pr-1"> </i> {{ quiz.leader }}
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                {% endfor %}
-            {% endif %}
+                    {% endfor %}
+                {% endif %}
+            </div>
+            <div class="navigation float-right">
+                {{ knp_pagination_render(quizzes) }}
+            </div>
         </div>
-    </div>
 
 
 {% endblock %}
