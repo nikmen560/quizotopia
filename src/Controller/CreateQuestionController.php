@@ -23,14 +23,14 @@ class CreateQuestionController extends AbstractController
         $form=$this->createForm(AnswerCountFormType::class);
         $form->handleRequest($request);
         if($form->isSubmitted()&&$form->isValid()){
-            if($form->get('answerCount')->getData()>7||$form->get('answerCount')->getData()<=1){
+            if($form->get('answerCount')->getData()-1>7||$form->get('answerCount')->getData()-1<1){
                 return $this->render('create_question/answer.html.twig', [
                     'form'=>$form->createView(),
-                    'error'=>'Wrong answer range is 1 to 7',
+                    'error'=>'answer range is from 2 to 8',
                 ]);
             }
             return $this->redirectToRoute('create_question',[
-                'count'=>$form->get('answerCount')->getData(),
+                'count'=>$form->get('answerCount')->getData()-1,
             ]);
         }
         return $this->render('create_question/answer.html.twig', [

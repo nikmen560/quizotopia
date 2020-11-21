@@ -24,25 +24,32 @@ class CreateQuizController extends AbstractController
         $em=$this->getDoctrine()->getManager();
         $form = $this->createForm(CreateQuizFormType::class);
         $form->handleRequest($request);
+        $error=null;
         if($form->isSubmitted() && $form->isValid()){
             $quiz->setName($form->get('quizName')->getData());
             $questions=$form->get('quizQuestions')->getData();
-            $quiz->setStatus(true);
-            $currentTime=new \DateTime();
-            $quiz->setCreatedAt($currentTime);
-            foreach ($questions as $question){
-                $quizQuestion=new QuizQuestion();
-                $quizQuestion->setQuestion($question);
-                $quiz->addQuizQuestion($quizQuestion);
-                $em->persist($quizQuestion);
+            if(count($questions)) {
+                $quiz->setStatus(true);
+                $currentTime = new \DateTime();
+                $quiz->setCreatedAt($currentTime);
+                foreach ($questions as $question) {
+                    $quizQuestion = new QuizQuestion();
+                    $quizQuestion->setQuestion($question);
+                    $quiz->addQuizQuestion($quizQuestion);
+                    $em->persist($quizQuestion);
+                }
+                $em->persist($quiz);
+                $em->flush();
+                return $this->redirectToRoute('admin');
             }
-            $em->persist($quiz);
-            $em->flush();
-            return $this->redirectToRoute('admin');
+            else{
+                $error='choose at least 1 question';
+            }
         }
         return $this->render('create_quiz/index.html.twig', [
             'controller_name' => 'CreateQuizController',
             'CreateQuizForm' => $form->createView(),
+            'error'=>$error,
         ]);
     }
 }
