@@ -6,15 +6,11 @@
 
 
     <div class="col-12 col-lg-4 col-md-4">
-        {# <div class="form-group input-group"> #}
         {{ form_start(CreateQuizForm) }}
-
-
-        <div class="btn-group" role="group" aria-label="Basic example">
-            <button class="btn btn-primary bg-info " type="submit">Create Quiz</button>
-            <button class="btn btn-primary btn-hide" type="button">Choose questions</button>
-
-        </div>
+{#        <div class="btn-group" role="group" aria-label="Basic example">#}
+            <button class="btn btn-primary bg-info btn-block" type="submit">Create Quiz</button>
+            <button class="btn btn-primary btn-hide btn-block" type="button">Choose questions</button>
+{#        </div>#}
         {{ form_label(CreateQuizForm.quizName) }}
         {{ form_widget(CreateQuizForm.quizName) }}
         <div class="table-hide" style="visibility: hidden; ">
