@@ -1,6 +1,6 @@
 {% extends 'admin_base.twig' %}
 
-{% block title %}Answer amount{% endblock %}
+{% block title %}Answers amount{% endblock %}
 
 {% block navigation %}
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -37,8 +37,8 @@
     <div class="row no-gutters justify-content-center">
         <div class="col-12 col-lg-4 col-md-4 ">
             <div class="form-login shadow-lg border" style="padding: 30px; margin: 30% auto">
-    <div>{{ error }}</div>
                 <h1 class="h3 mb-4 font-weight-normal text-center ">Amount of answers</h1>
+                <div class="alert-danger text-center mb-4 font-weight-normal">{{ error }}</div>
     {{ form_start(form) }}
                 {{ form_widget(form.answerCount,{'attr': {
                     'class': 'form-control',
