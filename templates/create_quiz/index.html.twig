@@ -9,15 +9,13 @@
         {# <div class="form-group input-group"> #}
         {{ form_start(CreateQuizForm) }}
 
-
-        <div class="btn-group" role="group" aria-label="Basic example">
-            <button class="btn btn-primary bg-info " type="submit">Create Quiz</button>
-            <button class="btn btn-primary btn-hide" type="button">Choose questions</button>
-
+        <div class="container-fluid">
+            <div class="alert-danger">{{ error }}</div>
+            <div>{{ form_label(CreateQuizForm.quizName) }}</div>
+            <div>{{ form_widget(CreateQuizForm.quizName) }}</div>
         </div>
-        {{ form_label(CreateQuizForm.quizName) }}
-        {{ form_widget(CreateQuizForm.quizName) }}
-        <div class="table-hide" style="visibility: hidden; ">
+        <button class="btn btn-primary btn-hide" type="button">Choose questions</button>
+        <div class="table-hide" style="display: none; ">
 
             <table class="table" id="q-table">
                 <thead>
@@ -37,6 +35,9 @@
                 </tbody>
             </table>
         </div>
+        <div class="container-fluid">
+            <button class="btn btn-primary bg-info " type="submit">Create Quiz</button>
+        </div>
         {{ form_end(CreateQuizForm) }}
         {# </div> #}
     </div>
@@ -50,10 +51,10 @@
                 "info": false,
             });
             $('.btn-hide').click(function () {
-                if ($('.table-hide').css('visibility') === 'hidden')
-                    $('.table-hide').css('visibility', 'visible');
+                if ($('.table-hide').css('display') === 'none')
+                    $('.table-hide').css('display', 'block');
                 else
-                    $('.table-hide').css('visibility', 'hidden');
+                    $('.table-hide').css('display', 'none');
             });
             // $('.btn-hide').click(function () {
             //     $('.table-hide').slideToggle(300);
