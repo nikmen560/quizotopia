@@ -25,7 +25,7 @@ class QuizPlayerController extends AbstractController
     public function index(int $id, int $quizId,QuizQuestionRepository $quizQuestionRepository, UserRepository $userRepository, QuizUserRepository $quizUserRepository): Response
     {
         $user=$userRepository->findByUsername($this->getUser()->getUsername());
-        $playingUser=$quizUserRepository->findByUser($user);
+        $playingUser=$quizUserRepository->findByUser($user,$quizId);
         if($playingUser!=null) {
             if ($playingUser->getCurrentQuestion() == $id && $playingUser->getQuiz()->getId() == $quizId) {
                 $nextQuestion = $quizQuestionRepository->findNextQuestion($id, $quizId);
@@ -39,21 +39,35 @@ class QuizPlayerController extends AbstractController
                     'quizId' => $playingUser->getQuiz()->getId()
                 ]);
             }
-            $answers = $nextQuestion->getQuestion()->getAnswers();
-            $correctAnswer = $answers[0];
-            $correctAnswerPlace = mt_rand(0,count($answers)-1);
-            $answers[0]=$answers[$correctAnswerPlace];
-            $answers[$correctAnswerPlace]=$correctAnswer;
-            $playingUser->setCurrentQuestion($nextQuestion->getId());
-            $em=$this->getDoctrine()->getManager();
-            $em->persist($playingUser);
-            $em->flush();
-            return $this->render('quiz_player/index.html.twig', [
-                'controller_name' => 'QuizPlayerController',
-                'qq' => $nextQuestion,
-                'quizId' => $quizId,
-                'answers' => $answers,
-            ]);
+            if($nextQuestion!=null) {
+                if ($nextQuestion->getQuestion()) {
+                    $answers = $nextQuestion->getQuestion()->getAnswers();
+                    $correctAnswer = $answers[0];
+                    $correctAnswerPlace = mt_rand(0, count($answers) - 1);
+                    $answers[0] = $answers[$correctAnswerPlace];
+                    $answers[$correctAnswerPlace] = $correctAnswer;
+                    $playingUser->setCurrentQuestion($nextQuestion->getId());
+                    $em = $this->getDoctrine()->getManager();
+                    $em->persist($playingUser);
+                    $em->flush();
+                    return $this->render('quiz_player/index.html.twig', [
+                        'controller_name' => 'QuizPlayerController',
+                        'qq' => $nextQuestion,
+                        'quizId' => $quizId,
+                        'answers' => $answers,
+                    ]);
+                }
+            }
+            else{
+                $playingUser->setCurrentQuestion(-1);
+                $em=$this->getDoctrine()->getManager();
+                $em->persist($playingUser);
+                $em->flush();
+                return $this->redirectToRoute('user_rating',[
+                    'id'=>$quizId,
+                    'userId'=>$user->getId(),
+                ]);
+            }
         }
         else{
             return $this->redirectToRoute('quizzes');

@@ -25,10 +25,12 @@ class QuizUserRepository extends ServiceEntityRepository
     //  * @return QuizUser[] Returns an array of QuizUser objects
     //  */
 
-    public function findByUser($value)
+    public function findByUser($value,$quizId)
     {
         return $this->createQueryBuilder('q')
             ->andWhere('q.user = :val')
+            ->andWhere('q.quiz= :quizId')
+            ->setParameter('quizId',$quizId)
             ->setParameter('val', $value)
             ->orderBy('q.id', 'ASC')
             ->setMaxResults(1)
