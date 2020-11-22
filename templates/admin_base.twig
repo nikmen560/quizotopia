@@ -16,30 +16,30 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item active">
-                        <a class="nav-link" href="{{ path('mainpage') }}">Admin Home<span
+                        <a class="nav-link" href="{{ path('mainpage') }}">{% trans %}Admin Home{% endtrans %}<span
                                     class="sr-only">(current)</span></a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ path('admin_users') }}">Users control</a>
+                        <a class="nav-link" href="{{ path('admin_users') }}">{% trans %}Users control{% endtrans %}</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link " href="{{ path('admin_quizes') }}">Quizzes control</a>
+                        <a class="nav-link " href="{{ path('admin_quizes') }}">{% trans %}Quizzes control{% endtrans %}</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ path('admin_questions') }}">Questions control</a>
+                        <a class="nav-link" href="{{ path('admin_questions') }}">{% trans %}Questions control{% endtrans %}</a>
                     </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Create
+                            {% trans %}Create{% endtrans %}
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="{{ path('initial_create_question') }}">Create Question</a>
-                            <a class="dropdown-item" href="{{ path('create_quiz') }}">Create Quiz</a>
+                            <a class="dropdown-item" href="{{ path('initial_create_question') }}">{% trans %}Create Question{% endtrans %}</a>
+                            <a class="dropdown-item" href="{{ path('create_quiz') }}">{% trans %}Create Quiz{% endtrans %}</a>
                         </div>
                     </li>
 
                 </ul>
-                <a class="nav-link btn btn-outline-info" href="{{ path('app_logout') }}">logout</a>
+                <a class="nav-link btn btn-outline-info" href="{{ path('app_logout') }}">{% trans %}logout{% endtrans %}</a>
             </div>
         </nav>
     {% endblock %}

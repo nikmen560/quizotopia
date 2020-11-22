@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Register{% endblock %}
+{% block title %}{% trans %}Register{% endtrans %}{% endblock %}
 
 {% block content %}
     {% for flashError in app.flashes('verify_email_error') %}
@@ -12,7 +12,7 @@
                 <div class="form-login shadow-lg border" style="padding: 30px; margin: 30% auto">
 
                     {{ form_start(registrationForm) }}
-                    <h1 class="h3 mb-3 font-weight-normal text-center mb-4">Sign up</h1>
+                    <h1 class="h3 mb-3 font-weight-normal text-center mb-4">{% trans %}Sign up{% endtrans %}</h1>
 
                     {% if form_errors(registrationForm.email) %}
 
@@ -68,8 +68,8 @@
                             }
                         }) }}
                     </div>
-                    <button class="btn btn-block btn-primary bg-info mt-3" type="submit">Register</button>
-                    <p class="text-center mt-4">Have an account? <a href="{{ path('app_login') }}">Log In</a></p>
+                    <button class="btn btn-block btn-primary bg-info mt-3" type="submit">{% trans %}Register{% endtrans %}</button>
+                    <p class="text-center mt-4">{% trans %}Have an account?{% endtrans %}<a href="{{ path('app_login') }}">{% trans %}Log In{% endtrans %}</a></p>
                     {{ form_end(registrationForm) }}
                 </div>
             </div>

@@ -6,28 +6,28 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
             <li class="nav-item">
-                <a class="nav-link" href="{{ path('mainpage') }}">Admin Home</a>
+                <a class="nav-link" href="{{ path('mainpage') }}">{% trans %}Admin Home{% endtrans %}</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="{{ path('admin_users') }}">Users control</a>
+                <a class="nav-link" href="{{ path('admin_users') }}">{% trans %}Users control{% endtrans %}</a>
             </li>
             <li class="nav-item active">
-                <a class="nav-link" href="{{ path('admin_quizes') }}">Quizzes control</a>
+                <a class="nav-link" href="{{ path('admin_quizes') }}">{% trans %}Quizzes control{% endtrans %}</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="{{ path('admin_questions') }}">Questions control</a>
+                <a class="nav-link" href="{{ path('admin_questions') }}">{% trans %}Questions control{% endtrans %}</a>
             </li>
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Create
+                    {% trans %}Create{% endtrans %}
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="{{ path('initial_create_question') }}">Create Question</a>
-                    <a class="dropdown-item" href="{{ path('create_quiz') }}">Create Quiz</a>
+                    <a class="dropdown-item" href="{{ path('initial_create_question') }}">{% trans %}Create Question{% endtrans %}</a>
+                    <a class="dropdown-item" href="{{ path('create_quiz') }}">{% trans %}Create Quiz{% endtrans %}</a>
                 </div>
             </li>
         </ul>
-        <a class="nav-link btn btn-outline-info" href="{{ path('app_logout') }}">logout</a>
+        <a class="nav-link btn btn-outline-info" href="{{ path('app_logout') }}">{% trans %}logout{% endtrans %}</a>
     </div>
     </nav>
 {% endblock %}
@@ -37,13 +37,13 @@
     <div class="row no-gutters justify-content-center">
         <div class="col-12 col-lg-4 col-md-4 ">
             <div class="form-login shadow-lg border" style="padding: 30px; margin: 30% auto">
-                <h1 class="h3 mb-4 font-weight-normal text-center ">Amount of answers</h1>
-                <div class="alert-danger text-center mb-4 font-weight-normal">{{ error }}</div>
+                <h1 class="h3 mb-4 font-weight-normal text-center ">{% trans %}Amount of answers{% endtrans %}</h1>
+                <div class="alert-danger text-center mb-4 font-weight-normal">{{ error | trans }}</div>
     {{ form_start(form) }}
                 {{ form_widget(form.answerCount,{'attr': {
                     'class': 'form-control',
                     'placeholder': "choose amount of answers"}}) }}
-                <button class="btn btn-info btn-block my-4" type="submit">Go</button>
+                <button class="btn btn-info btn-block my-4" type="submit">{% trans %}Next{% endtrans %}</button>
     {{ form_end(form) }}
             </div>
         </div>

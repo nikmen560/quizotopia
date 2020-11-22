@@ -5,11 +5,11 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
             <li class="nav-item">
-                <a class="nav-link" href="{{ path('quizzes') }}">Quizzes</a>
+                <a class="nav-link" href="{{ path('quizzes') }}">{% trans %}Quizzes{% endtrans %}</a>
             </li>
 
         </ul>
-        <a class="nav-link btn btn-outline-info" href="{{ path('app_logout') }}">logout</a>
+        <a class="nav-link btn btn-outline-info" href="{{ path('app_logout') }}">{% trans %}logout{% endtrans %}</a>
     </div>
 {% endblock %}
 {% block content %}

@@ -8,18 +8,15 @@
     <div class="col-12 col-lg-4 col-md-4 mt-4 mb-4">
         {{ form_start(CreateQuizForm) }}
         <div class="form-group input-group">
-            <div class="alert-danger text-center">{{ error }}</div>
+            <div class="alert-danger text-center">{{ error | trans }}</div>
             {{ form_widget(CreateQuizForm.quizName, {'attr': {'class': 'form-control',
                 'placeholder': "Enter Quiz name"}}) }}
         </div>
-        {# <button class="btn btn-block btn-primary btn-hide" type="button">Choose questions</button> #}
-
-        {# <div class="table-hide" style="display: none; "> #}
         <table class="table table-hide responsive nowrap" id="q-table" style="display: none;">
             <thead>
             <tr>
                 <th></th>
-                <th>question</th>
+                <th>{% trans %}Question{% endtrans %}</th>
             </tr>
             </thead>
             <tbody>
@@ -32,7 +29,7 @@
 
             </tbody>
         </table>
-        <button class="btn btn-block btn-primary bg-info " type="submit">Create Quiz</button>
+        <button class="btn btn-block btn-primary bg-info " type="submit">{% trans %}Create Quiz{% endtrans %}</button>
     </div>
 
     {{ form_end(CreateQuizForm) }}
@@ -50,7 +47,7 @@
             });
             $('#q-table_filter').css('display', 'none');
 
-            $("div.toolbar").html('<input type="search" class="form-control" placeholder="search questions" id="query" aria-controls="q-table">');
+            $("div.toolbar").html('<input type="search" class="form-control" placeholder="{% trans %}search questions{% endtrans %}" id="query" aria-controls="q-table">');
             $('#query').click(function () {
                 if ($('.table-hide').css('display') === 'none') $('.table-hide').css('display', 'block');
                 else

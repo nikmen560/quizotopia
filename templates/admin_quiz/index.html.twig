@@ -7,29 +7,29 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
             <li class="nav-item">
-                <a class="nav-link" href="{{ path('mainpage') }}">Admin Home</a>
+                <a class="nav-link" href="{{ path('mainpage') }}">{% trans %}Admin Home{% endtrans %}</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="{{ path('admin_users') }}">Users control</a>
+                <a class="nav-link" href="{{ path('admin_users') }}">{% trans %}Users control{% endtrans %}</a>
             </li>
             <li class="nav-item active">
-                <a class="nav-link active" href="{{ path('admin_quizes') }}">Quizzes control</a>
+                <a class="nav-link active" href="{{ path('admin_quizes') }}">{% trans %}Quizzes control{% endtrans %}</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="{{ path('admin_questions') }}">Questions control</a>
+                <a class="nav-link" href="{{ path('admin_questions') }}">{% trans %}Questions control{% endtrans %}</a>
             </li>
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
                    aria-haspopup="true" aria-expanded="false">
-                    Create
+                    {% trans %}Create{% endtrans %}
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="{{ path('initial_create_question') }}">Create Question</a>
-                    <a class="dropdown-item" href="{{ path('create_quiz') }}">Create Quiz</a>
+                    <a class="dropdown-item" href="{{ path('initial_create_question') }}">{% trans %}Create Question{% endtrans %}</a>
+                    <a class="dropdown-item" href="{{ path('create_quiz') }}">{% trans %}Create Quiz{% endtrans %}</a>
                 </div>
             </li>
         </ul>
-        <a class="nav-link btn btn-outline-info" href="{{ path('app_logout') }}">logout</a>
+        <a class="nav-link btn btn-outline-info" href="{{ path('app_logout') }}">{% trans %}logout{% endtrans %}</a>
     </div>
     </nav>
 {% endblock %}
@@ -57,14 +57,14 @@
                                 </p>
                                 {% if quiz.status %}
                                     <a class="btn btn-outline-warning" value="{{ quiz.id }}"
-                                       href="{{ path('block_quiz', {'id': quiz.id}) }}">Block</a>
+                                       href="{{ path('block_quiz', {'id': quiz.id}) }}">{% trans %}Block{% endtrans %}</a>
                                 {% else %}
 
                                     <a class="btn btn-outline-warning" value="{{ quiz.id }}"
-                                       href="{{ path('unblock_quiz', {'id': quiz.id}) }}">Unblock</a>
+                                       href="{{ path('unblock_quiz', {'id': quiz.id}) }}">{% trans %}Unblock{% endtrans %}</a>
                                 {% endif %}
                                 <a class="btn btn-outline-danger" value="{{ quiz.id }}"
-                                   href="{{ path('delete_quiz', {"id": quiz.id}) }}">Delete</a>
+                                   href="{{ path('delete_quiz', {"id": quiz.id}) }}">{% trans %}Delete{% endtrans %}</a>
 
                             </div>
                             <div class="card-footer text-muted text-center mt-4">
@@ -73,9 +73,9 @@
                                 </div>
                                 <div class="float-right">
                                     {% if quiz.status %}
-                                        <div>active</div>
+                                        <div>{% trans %}active{% endtrans %}</div>
                                     {% else %}
-                                        <div class="">blocked</div>
+                                        <div class="">{% trans %}blocked{% endtrans %}</div>
                                     {% endif %}
                                 </div>
                             </div>

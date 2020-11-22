@@ -40,10 +40,10 @@
                                 <div class="card-body card-body-cascade text-center">
                                     {% if quiz.status %}
                                         <a class="btn btn-unique" value="{{ quiz.id }}"
-                                           href="{{ path('play_quiz', {"id": quiz.id}) }}">Play</a>
+                                           href="{{ path('play_quiz', {"id": quiz.id}) }}">{% trans %}Play{% endtrans %}</a>
                                     {% else %}
                                         <a class="btn btn-info disabled" value="{{ quiz.id }}"
-                                           href="{{ path('play_quiz', {"id": quiz.id}) }}">Play</a>
+                                           href="{{ path('play_quiz', {"id": quiz.id}) }}">{% trans %}Play{% endtrans %}</a>
                                     {% endif %}
                                 </div>
                                 <div class="card-footer text-muted text-center mt-4">

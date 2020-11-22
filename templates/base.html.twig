@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{% block title %}Welcome to Quizotopia!{% endblock %}</title>
+    <title>{% block title %}{% trans %}Welcome to Quizotopia!{% endtrans %}{% endblock %}</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
           integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN"
           crossorigin="anonymous">
@@ -34,13 +34,6 @@
 
         {% block navigation %}
 
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav mr-auto">
-                    <li class="nav-item active">
-                        <a class="nav-link" href="{{ path('mainpage') }}">Home<span class="sr-only">(current)</span></a>
-                    </li>
-                </ul>
-            </div>
         {% endblock %}
     </nav>
 
@@ -63,18 +56,18 @@
             </div>
             <hr class="clearfix w-100 d-md-none pb-3">
             <div class="col-md-3 mb-md-0 mb-3">
-                <h5 class="text-uppercase">Developers</h5>
+                <h5 class="text-uppercase">{% trans %}Developers{% endtrans %}</h5>
                 <ul class="list-unstyled">
                     <li>
-                        Lesha Turuto
+                        {% trans %}Lesha{% endtrans%} {% trans %}Turuto{% endtrans %}
                     </li>
                     <li>
-                        Nikita Kovalev
+                        {% trans %}Nikita{% endtrans%} {% trans %}Kovalev{% endtrans %}
                     </li>
                 </ul>
             </div>
             <div class="col-md-3 mb-md-0 mb-3">
-                <h5 class="text-uppercase">Contact us</h5>
+                <h5 class="text-uppercase">{% trans %}Contact us{% endtrans %}</h5>
                 <ul class="list-unstyled ">
                     <li>
                         bissmmhunter@gmail.com

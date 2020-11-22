@@ -5,13 +5,9 @@
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
-            <li class="nav-item active">
-                <a class="nav-link" href="{{ path('mainpage') }}">Home<span class="sr-only">(current)</span></a>
-            </li>
 
         </ul>
-        <a class=" nav-link btn btn-outline-success  my-2 my-sm-0 btn-lg " href="{{ path('app_login') }}">Sign
-            in</a>
+        <a class=" nav-link btn btn-outline-success  my-2 my-sm-0 btn-lg " href="{{ path('app_login') }}">{% trans %}Sign In{% endtrans %}</a>
     </div>
     </nav>
 
@@ -30,20 +26,15 @@
 
                     <h1 class="text-center title p-5 text-dark bg-white card  font-weight-bold wow fadeIn"
                         data-wow-delay="0.2s">
-                        <strong>Welcome to Quizotopia!</strong>
+                        <strong>{% trans %}Welcome to Quizotopia!{% endtrans %}</strong>
                     </h1>
                     <div class="row mt-5">
                         <div class=" card card-body col-md-6 mb-5 mt-md-0 mt-5 p-4 text-center text-md-left bg-white">
 
-                            <h1 class="h1-responsive font-weight-bold wow fadeInLeft" data-wow-delay="0.3s">Sign up
-                                right
-                                now! </h1>
+                            <h1 class="h1-responsive font-weight-bold wow fadeInLeft" data-wow-delay="0.3s">{% trans %}Sign up right now!{% endtrans%} </h1>
                             <hr class="hr-black wow fadeInLeft" data-wow-delay="0.3s">
-                            <h6 class="mb-3 wow fadeInLeft" data-wow-delay="0.3s">Do you want to play quiz? If you
-                                really
-                                do,
-                                please press the Sign In button!</h6>
-                            <a class="btn btn-outline-black wow fadeInLeft" data-wow-delay="0.3s" href="{{ path('app_login') }}">Sign In</a>
+                            <h6 class="mb-3 wow fadeInLeft" data-wow-delay="0.3s">{% trans %}Do you want to play quiz? If you really do, please press the Sign In button!{% endtrans %}</h6>
+                            <a class="btn btn-outline-black wow fadeInLeft" data-wow-delay="0.3s" href="{{ path('app_login') }}">{%trans %}Sign In{% endtrans %}</a>
 
                         </div>
 
@@ -55,11 +46,11 @@
                                 <div class="card card-body text-left white hoverable">
                                     <p class="font-weight-bold title font-weight-bold dark-grey-text text-uppercase spacing mt-4 mx-4">
                                         <i class="fa fa-square orange-text mr-2" aria-hidden="true"></i>
-                                        <strong>Blogging</strong>
+                                        <strong>{% trans %}Blogging{% endtrans %}</strong>
                                     </p>
-                                    <p class="grey-text font-small mx-4"> Build your community and create giveaways “live” online
+                                    <p class="grey-text font-small mx-4">{% trans %}Build your community and create giveaways “live” online{% endtrans %}
                                     <p class="font-small font-weight-bold orange-text mx-4 mb-0">
-                                        <a>read more</a>
+                                        <a>{% trans %}read more{% endtrans %}</a>
                                     </p>
                                     </p>
                                 </div>
@@ -69,11 +60,11 @@
                                 <div class="card card-body text-left white hoverable">
                                     <p class="font-weight-bold title font-weight-bold dark-grey-text text-uppercase spacing mt-4 mx-4">
                                         <i class="fa fa-square orange-text mr-2" aria-hidden="true"></i>
-                                        <strong>Web design</strong>
+                                        <strong>{% trans %}Web design{% endtrans %}</strong>
                                     </p>
-                                    <p class="grey-text font-small mx-4"> Our web application is well designed in minimalistic way
+                                    <p class="grey-text font-small mx-4">{% trans %}Our web application is well designed in minimalistic way{% endtrans %}
                                     <p class="font-small font-weight-bold orange-text mx-4 mb-0">
-                                        <a>read more</a>
+                                        <a>{% trans %}read more{% endtrans %}</a>
                                     </p>
                                     </p>
                                 </div>
@@ -82,11 +73,11 @@
                                 <div class="card card-body text-left white hoverable">
                                     <p class="font-weight-bold title font-weight-bold dark-grey-text text-uppercase spacing mt-4 mx-4">
                                         <i class="fa fa-square orange-text mr-2" aria-hidden="true"></i>
-                                        <strong>Development</strong>
+                                        <strong>{% trans %}Development{% endtrans %}</strong>
                                     </p>
-                                    <p class="grey-text font-small mx-4"> Our team is consist of two ambitious developers, who have developed this app for only month and a half.
+                                    <p class="grey-text font-small mx-4">{% trans %}Our team is consist of two ambitious developers, who have developed this app for only month and a half.{% endtrans %}
                                     <p class="font-small font-weight-bold orange-text mx-4 mb-0">
-                                        <a>read more</a>
+                                        <a>{% trans %}read more{% endtrans %}</a>
                                     </p>
                                     </p>
                                 </div>
@@ -96,11 +87,11 @@
                                 <div class="card card-body text-left white hoverable">
                                     <p class="font-weight-bold title font-weight-bold dark-grey-text text-uppercase spacing mt-4 mx-4">
                                         <i class="fa fa-square orange-text mr-2" aria-hidden="true"></i>
-                                        <strong>Memorization</strong>
+                                        <strong>{% trans %}Memorization{% endtrans %}</strong>
                                     </p>
-                                    <p class="grey-text font-small mx-4"> Are you trying to memorize something? Just try our app out and you won't even notice how you already memorize it.
+                                    <p class="grey-text font-small mx-4">{% trans %}Are you trying to memorize something? Just try our app out and you won't even notice how you already memorize it.{% endtrans %}
                                     <p class="font-small font-weight-bold orange-text mx-4 mb-0">
-                                        <a>read more</a>
+                                        <a>{% trans %}read more{% endtrans %}</a>
                                     </p>
                                     </p>
                                 </div>
