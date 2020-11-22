@@ -19,7 +19,6 @@ class QuizesListController extends AbstractController
      */
     public function index(QuizRepository $quizRepository,UserPositionRepository $userPositionRepository, PaginatorInterface $paginator, Request $request): Response
     {
-        var_dump($request->getLocale());
         $userName = $this->getUser()->getUsername();
         if(in_array("ROLE_ADMIN",$this->getUser()->getRoles())){
             return $this->redirectToRoute('admin');
