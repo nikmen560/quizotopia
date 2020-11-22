@@ -1,105 +1,135 @@
-{% extends 'base.html.twig' %}
+{% extends 'admin_base.twig' %}
 
 {% block title %}Edit question{% endblock %}
+{% block navigation %}
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+                <a class="nav-link" href="{{ path('mainpage') }}">Admin Home<span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{{ path('admin_users') }}">Users control</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link " href="{{ path('admin_quizes') }}">Quizzes control</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{{ path('admin_questions') }}">Questions control</a>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Create
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="{{ path('initial_create_question') }}">Create Question</a>
+                    <a class="dropdown-item" href="{{ path('create_quiz') }}">Create Quiz</a>
+                </div>
+            </li>
+        </ul>
+        <a class="nav-link btn btn-outline-info" href="{{ path('app_logout') }}">logout</a>
+    </div>
+    </nav>
+{% endblock %}
 
 {% block content %}
 
-<div class="container-fluid">
-    <div class="row no-gutters justify-content-center">
-        <div class="col-12 col-lg-4 col-md-4 ">
-            <div class="form-login shadow-lg border" style="padding: 30px; margin: 20% auto">
-                {{ form_start(form) }}
+    <div class="container-fluid">
+        <div class="row no-gutters justify-content-center">
+            <div class="col-12 col-lg-4 col-md-4 ">
+                <div class="form-login shadow-lg border" style="padding: 30px; margin: 20% auto">
+                    {{ form_start(form) }}
 
-                <h1 class="h3 mb-3 font-weight-normal text-center mb-4">Edit question</h1>
+                    <h1 class="h3 mb-3 font-weight-normal text-center mb-4">Edit question</h1>
 
 
-                <div class="form-group input-group">
-                    {{ form_widget(form.content,{'attr': {
-                        'class': 'form-control',
-                        'placeholder': "Enter a question"}
-                    }) }}
-                </div>
-
-                <div class="form-group input-group">
-                    {{ form_widget(form.correct_answer,{'attr': {
-                        'class': 'form-control',
-                        'placeholder': "Correct answer"}
-                    }) }}
-
-                </div>
-
-                <div class="form-group input-group">
-                    {{ form_widget(form.answer_1,{'attr': {
-                        'class': 'form-control',
-                        'placeholder': "Other answer"}
-                    }) }}
-
-                </div>
-                {% if count>1 %}
                     <div class="form-group input-group">
-                        {{ form_widget(form.answer_2,{'attr': {
+                        {{ form_widget(form.content,{'attr': {
+                            'class': 'form-control',
+                            'placeholder': "Enter a question"}
+                        }) }}
+                    </div>
+
+                    <div class="form-group input-group">
+                        {{ form_widget(form.correct_answer,{'attr': {
+                            'class': 'form-control',
+                            'placeholder': "Correct answer"}
+                        }) }}
+
+                    </div>
+
+                    <div class="form-group input-group">
+                        {{ form_widget(form.answer_1,{'attr': {
                             'class': 'form-control',
                             'placeholder': "Other answer"}
                         }) }}
 
                     </div>
-                    {% if count>2 %}
+                    {% if count>1 %}
                         <div class="form-group input-group">
-                            {{ form_widget(form.answer_3,{'attr': {
+                            {{ form_widget(form.answer_2,{'attr': {
                                 'class': 'form-control',
                                 'placeholder': "Other answer"}
                             }) }}
 
                         </div>
-                        {% if count>3 %}
+                        {% if count>2 %}
                             <div class="form-group input-group">
-                                {{ form_widget(form.answer_4,{'attr': {
+                                {{ form_widget(form.answer_3,{'attr': {
                                     'class': 'form-control',
                                     'placeholder': "Other answer"}
                                 }) }}
 
                             </div>
-                            {% if count>4 %}
+                            {% if count>3 %}
                                 <div class="form-group input-group">
-                                    {{ form_widget(form.answer_5,{'attr': {
+                                    {{ form_widget(form.answer_4,{'attr': {
                                         'class': 'form-control',
                                         'placeholder': "Other answer"}
                                     }) }}
 
                                 </div>
-                                {% if count>5 %}
+                                {% if count>4 %}
                                     <div class="form-group input-group">
-                                        {{ form_widget(form.answer_6,{'attr': {
+                                        {{ form_widget(form.answer_5,{'attr': {
                                             'class': 'form-control',
                                             'placeholder': "Other answer"}
                                         }) }}
 
                                     </div>
-                                    {% if count>6 %}
+                                    {% if count>5 %}
                                         <div class="form-group input-group">
-                                        {{ form_widget(form.answer_7,{'attr': {
-                                            'class': 'form-control',
-                                            'placeholder': "Other answer"}
-                                        }) }}
-                                        {% if count>7 %}
-                                            </div>
+                                            {{ form_widget(form.answer_6,{'attr': {
+                                                'class': 'form-control',
+                                                'placeholder': "Other answer"}
+                                            }) }}
+
+                                        </div>
+                                        {% if count>6 %}
                                             <div class="form-group input-group">
-                                                {{ form_widget(form.answer_8,{'attr': {
-                                                    'class': 'form-control',
-                                                    'placeholder': "Other answer"}
-                                                }) }}
-                                            </div>
+                                            {{ form_widget(form.answer_7,{'attr': {
+                                                'class': 'form-control',
+                                                'placeholder': "Other answer"}
+                                            }) }}
+                                            {% if count>7 %}
+                                                </div>
+                                                <div class="form-group input-group">
+                                                    {{ form_widget(form.answer_8,{'attr': {
+                                                        'class': 'form-control',
+                                                        'placeholder': "Other answer"}
+                                                    }) }}
+                                                </div>
+                                            {% endif %}
                                         {% endif %}
                                     {% endif %}
                                 {% endif %}
                             {% endif %}
                         {% endif %}
                     {% endif %}
-                {% endif %}
+                    <button class="btn btn-block btn-primary bg-info mt-3" type="submit">Edit</button>
+                </div>
+
             </div>
-            <button class="btn btn-block btn-primary bg-info mt-3" type="submit">Edit</button>
         </div>
+        {{ form_end(form) }}
     </div>
-    {{ form_end(form) }}
-</div>
 {% endblock %}
