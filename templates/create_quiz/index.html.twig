@@ -12,51 +12,53 @@
             {{ form_widget(CreateQuizForm.quizName, {'attr': {'class': 'form-control',
                 'placeholder': "Enter Quiz name"}}) }}
         </div>
-{#        <button class="btn btn-block btn-primary btn-hide" type="button">Choose questions</button>#}
+        {# <button class="btn btn-block btn-primary btn-hide" type="button">Choose questions</button> #}
 
-{#        <div class="table-hide" style="display: none; ">#}
-            <table class="table table-hide" id="q-table" style="display: none;">
-                <thead>
+        {# <div class="table-hide" style="display: none; "> #}
+        <table class="table table-hide responsive nowrap" id="q-table" style="display: none;">
+            <thead>
+            <tr>
+                <th></th>
+                <th>question</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for question in CreateQuizForm.quizQuestions %}
                 <tr>
-                    <th></th>
-                    <th>question</th>
+                    <td>{{ form_widget(question) }}</td>
+                    <td>{{ form_label(question) }}</td>
                 </tr>
-                </thead>
-                <tbody>
-                {% for question in CreateQuizForm.quizQuestions %}
-                    <tr>
-                        <td>{{ form_widget(question) }}</td>
-                        <td>{{ form_label(question) }}</td>
-                    </tr>
-                {% endfor %}
+            {% endfor %}
 
-                </tbody>
-            </table>
-            <button class="btn btn-block btn-primary bg-info " type="submit">Create Quiz</button>
-        </div>
+            </tbody>
+        </table>
+        <button class="btn btn-block btn-primary bg-info " type="submit">Create Quiz</button>
+    </div>
 
-        {{ form_end(CreateQuizForm) }}
+    {{ form_end(CreateQuizForm) }}
 
     </div>
 
     <script>
         $(document).ready(function () {
-            $('#q-table').DataTable({
+            let table = $('#q-table').DataTable({
+                responsive: true,
                 "paging": false,
                 "ordering": false,
                 "info": false,
-                language: {
-                    searchPlaceholder: "search questions",
-                    search: "",
-                }
+                "dom": '<"toolbar">frtip'
             });
-            $('#Tab_filter').replaceWith("<div id='Tab_filter' class='dataTables_filter'><label>Search:<input class='' placeholder='Search' aria-controls='Tab' type='search'></label></div>");
-            $('.form-control-sm').click(function () {
-                if ($('.table-hide').css('display') === 'none')
-                    $('.table-hide').css('display', 'block');
+            $('#q-table_filter').css('display', 'none');
+
+            $("div.toolbar").html('<input type="search" class="form-control" placeholder="search questions" id="query" aria-controls="q-table">');
+            $('#query').click(function () {
+                if ($('.table-hide').css('display') === 'none') $('.table-hide').css('display', 'block');
                 else
                     $('.table-hide').css('display', 'none');
+            }).keyup(function () {
+                table.search($('#query').val()).draw();
             });
+
         });
     </script>
 
