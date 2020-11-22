@@ -21,92 +21,75 @@
     {% endblock %}
 </head>
 <body>
-    <header>
-        <nav class="navbar navbar-expand-md navbar-light bg-light h4">
 
-            <a class="navbar-brand" href="{{ path('mainpage') }}"><img src="/public/assets/images/logo1.png" alt=""></a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-                    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
+<header>
 
-            {% block navigation %}
+    <nav class="navbar navbar-expand-md navbar-light bg-white h4  scrolling-navbar">
 
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav mr-auto">
-                        <li class="nav-item active">
-                            <a class="nav-link" href="{{ path('mainpage') }}">Home<span class="sr-only">(current)</span></a>
-                        </li>
-                    </ul>
-                </div>
-            {% endblock %}
-        </nav>
-    </header>
-    <main>
-        {% block container %}
-            <div id="content" class="container-fluid">
-                <div class="row no-gutters justify-content-center">
-                    {% block content %}
+        <a class="navbar-brand" href="{{ path('mainpage') }}"><img src="/public/assets/images/logo1.png" alt=""></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
 
-                    {% endblock %}
-                </div>
+        {% block navigation %}
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="{{ path('mainpage') }}">Home<span class="sr-only">(current)</span></a>
+                    </li>
+                </ul>
             </div>
         {% endblock %}
-    </main>
-    <footer class="page-footer font-small bg-light   pt-4 text-dark">
+    </nav>
 
-        <div class="container-fluid text-center  text-md-left">
+</header>
 
-            <!-- Grid row -->
-            <div class="row">
+{% block container %}
+    <div id="content" class="container-fluid">
+        <div class="row no-gutters justify-content-center">
+            {% block content %}
 
-                <!-- Grid column -->
-                <div class="col-md-6 mt-md-0 mt-3">
-
-                    <!-- Content -->
-                    <h5 class="text-uppercase">Quizotopia</h5>
-
-                </div>
-                <!-- Grid column -->
-
-                <hr class="clearfix w-100 d-md-none pb-3">
-
-                <!-- Grid column -->
-                <div class="col-md-3 mb-md-0 mb-3">
-
-                    <!-- Links -->
-                    <h5 class="text-uppercase">Developers</h5>
-
-                    <ul class="list-unstyled">
-                        <li>
-                           Lesha Turuto
-                        </li>
-                        <li>
-                         Nikita Kovalev
-                        </li>
-                    </ul>
-
-                </div>
-                <div class="col-md-3 mb-md-0 mb-3">
-                    <h5 class="text-uppercase">Contact us</h5>
-
-                    <ul class="list-unstyled ">
-                        <li>
-                            bissmmhunter@gmail.com
-                        </li>
-                        <li>
-                            Kent720p@gmail.com
-                        </li>
-
-                    </ul>
-                </div>
+            {% endblock %}
+        </div>
+    </div>
+{% endblock %}
+<footer class="page-footer font-small bg-light   pt-4 text-dark">
+    <div class="container-fluid text-center  text-md-left">
+        <div class="row">
+            <div class="col-md-6 mt-md-0 mt-3">
+                <h5 class="text-uppercase">Quizotopia</h5>
+            </div>
+            <hr class="clearfix w-100 d-md-none pb-3">
+            <div class="col-md-3 mb-md-0 mb-3">
+                <h5 class="text-uppercase">Developers</h5>
+                <ul class="list-unstyled">
+                    <li>
+                        Lesha Turuto
+                    </li>
+                    <li>
+                        Nikita Kovalev
+                    </li>
+                </ul>
+            </div>
+            <div class="col-md-3 mb-md-0 mb-3">
+                <h5 class="text-uppercase">Contact us</h5>
+                <ul class="list-unstyled ">
+                    <li>
+                        bissmmhunter@gmail.com
+                    </li>
+                    <li>
+                        Kent720p@gmail.com
+                    </li>
+                </ul>
             </div>
         </div>
-        <div class="footer-copyright text-center py-3">© 2020 Copyright:
-            Quizotopia project
-        </div>
-
-    </footer>
+    </div>
+    <div class="footer-copyright text-center py-3">© 2020 Copyright:
+        Quizotopia project
+    </div>
+</footer>
 </body>
 </html>
 

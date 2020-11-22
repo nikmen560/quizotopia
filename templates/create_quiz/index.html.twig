@@ -5,64 +5,61 @@
 {% block content %}
 
 
-    <div class="col-12 col-lg-4 col-md-4">
-        {# <div class="form-group input-group"> #}
+    <div class="col-12 col-lg-4 col-md-4 mt-4 mb-4">
         {{ form_start(CreateQuizForm) }}
-
-        <div class="container-fluid">
-            <div class="alert-danger">{{ error }}</div>
-            <div>{{ form_label(CreateQuizForm.quizName) }}</div>
-            <div>{{ form_widget(CreateQuizForm.quizName) }}</div>
+        <div class="form-group input-group">
+            <div class="alert-danger text-center">{{ error }}</div>
+            {{ form_widget(CreateQuizForm.quizName, {'attr': {'class': 'form-control',
+                'placeholder': "Enter Quiz name"}}) }}
         </div>
-        <button class="btn btn-primary btn-hide" type="button">Choose questions</button>
-        <div class="table-hide" style="display: none; ">
+        {# <button class="btn btn-block btn-primary btn-hide" type="button">Choose questions</button> #}
 
-            <table class="table" id="q-table">
-                <thead>
+        {# <div class="table-hide" style="display: none; "> #}
+        <table class="table table-hide responsive nowrap" id="q-table" style="display: none;">
+            <thead>
+            <tr>
+                <th></th>
+                <th>question</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for question in CreateQuizForm.quizQuestions %}
                 <tr>
-                    <th></th>
-                    <th>question</th>
+                    <td>{{ form_widget(question) }}</td>
+                    <td>{{ form_label(question) }}</td>
                 </tr>
-                </thead>
-                <tbody>
-                {% for question in CreateQuizForm.quizQuestions %}
-                    <tr>
-                        <td>{{ form_widget(question) }}</td>
-                        <td>{{ form_label(question) }}</td>
-                    </tr>
-                {% endfor %}
+            {% endfor %}
 
-                </tbody>
-            </table>
-        </div>
-        <div class="container-fluid">
-            <button class="btn btn-primary bg-info " type="submit">Create Quiz</button>
-        </div>
-        {{ form_end(CreateQuizForm) }}
-        {# </div> #}
+            </tbody>
+        </table>
+        <button class="btn btn-block btn-primary bg-info " type="submit">Create Quiz</button>
+    </div>
+
+    {{ form_end(CreateQuizForm) }}
+
     </div>
 
     <script>
-
         $(document).ready(function () {
-            $('#q-table').DataTable({
+            let table = $('#q-table').DataTable({
+                responsive: true,
                 "paging": false,
                 "ordering": false,
                 "info": false,
+                "dom": '<"toolbar">frtip'
             });
-            $('.btn-hide').click(function () {
-                if ($('.table-hide').css('display') === 'none')
-                    $('.table-hide').css('display', 'block');
+            $('#q-table_filter').css('display', 'none');
+
+            $("div.toolbar").html('<input type="search" class="form-control" placeholder="search questions" id="query" aria-controls="q-table">');
+            $('#query').click(function () {
+                if ($('.table-hide').css('display') === 'none') $('.table-hide').css('display', 'block');
                 else
                     $('.table-hide').css('display', 'none');
+            }).keyup(function () {
+                table.search($('#query').val()).draw();
             });
-            // $('.btn-hide').click(function () {
-            //     $('.table-hide').slideToggle(300);
-            //     return false;
-            // });
-        });
 
+        });
     </script>
 
 {% endblock %}
-
