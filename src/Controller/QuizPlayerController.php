@@ -25,7 +25,7 @@ class QuizPlayerController extends AbstractController
     public function index(int $id, int $quizId,QuizQuestionRepository $quizQuestionRepository, UserRepository $userRepository, QuizUserRepository $quizUserRepository): Response
     {
         $user=$userRepository->findByUsername($this->getUser()->getUsername());
-        $playingUser=$quizUserRepository->findByUser($user,$quizId);
+        $playingUser=$quizUserRepository->findByUser($user);
         if($playingUser!=null) {
             if ($playingUser->getCurrentQuestion() == $id && $playingUser->getQuiz()->getId() == $quizId) {
                 $nextQuestion = $quizQuestionRepository->findNextQuestion($id, $quizId);

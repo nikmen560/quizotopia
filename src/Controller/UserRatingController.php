@@ -24,7 +24,7 @@ class UserRatingController extends AbstractController
     public function index($id,$userId,QuizUserRepository $quizUserRepository,UserRepository $userRepository,UserPositionRepository $userPositionRepository,QuizRepository $quizRepository, QuizQuestionRepository $quizQuestionRepository): Response
     {
         $user=$userRepository->find($userId);
-        $playedUser=$quizUserRepository->findByUser($user,$id);
+        $playedUser=$quizUserRepository->findByUser($user);
         $currentUser=$userRepository->findByUsername($this->getUser()->getUsername());
         if($currentUser->getId()==$userId) {
             if ($playedUser != null) {
