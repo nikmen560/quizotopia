@@ -27,7 +27,7 @@
                     {% if status %}
                         <a class="list-group-item list-group-item-action" href="{{ path('user_rating',{"id":quizId, "userId":user.id }) }}">{% trans %}Show Rating{% endtrans %}</a>
                     {% else %}
-                        <a class="list-group-item list-group-item-action" href="{{ path('quiz_player',{"id":qq, "quizId":quizId, }) }}">{% trans %}Next Question{% endtrans %}</a>
+                        <a class="list-group-item list-group-item-action" href="{{ path('quiz_player',{"id":nextQuestion, "quizId":quizId, }) }}">{% trans %}Next Question{% endtrans %}</a>
                     {% endif %}
                     </ul>
                 </div>

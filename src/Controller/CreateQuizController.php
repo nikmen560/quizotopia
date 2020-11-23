@@ -7,7 +7,6 @@ namespace App\Controller;
 use App\Entity\Quiz;
 use App\Entity\QuizQuestion;
 use App\Form\CreateQuizFormType;
-use App\Repository\QuestionRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;

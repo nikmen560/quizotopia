@@ -4,11 +4,9 @@ declare(strict_types=1);
 
 namespace App\Controller;
 
-use App\Entity\QuizQuestion;
 use App\Repository\AnswerRepository;
 use App\Repository\QuizQuestionRepository;
 use App\Repository\QuizUserRepository;
-use App\Repository\UserPositionRepository;
 use App\Repository\UserRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
@@ -52,7 +50,7 @@ class QuizPlayerController extends AbstractController
                     $em->flush();
                     return $this->render('quiz_player/index.html.twig', [
                         'controller_name' => 'QuizPlayerController',
-                        'qq' => $nextQuestion,
+                        'nextQuestion' => $nextQuestion,
                         'quizId' => $quizId,
                         'answers' => $answers,
                     ]);
@@ -104,7 +102,7 @@ class QuizPlayerController extends AbstractController
                 return $this->render('quiz_player/check.html.twig', [
                     'quizId' => $quizId,
                     'isTrue' => $isTrue,
-                    'qq' => $id,
+                    'nextQuestion' => $id,
                     'status'=>$status,
                     'user'=>$user,
                 ]);

@@ -5,8 +5,6 @@ declare(strict_types=1);
 namespace App\Controller;
 
 use App\Entity\Quiz;
-use App\Entity\QuizQuestion;
-use App\Repository\QuestionRepository;
 use App\Repository\QuizQuestionRepository;
 use App\Repository\QuizRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -33,7 +31,7 @@ class AdminQuizController extends AbstractController
      * @param $id
      */
 
-    public function deleteQuiz($id)
+    public function deleteQuiz(int $id)
     {
         $em = $this->getDoctrine()->getManager();
         $usr= $em->getRepository(Quiz::class)->find($id);

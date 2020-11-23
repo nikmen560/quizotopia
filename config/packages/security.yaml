@@ -39,3 +39,4 @@ security:
          - { path: ^/quizzes, roles: ROLE_USER }
          - { path: ^/play, roles: ROLE_USER }
          - { path: ^/quiz, roles: ROLE_USER }
+         - { path: ^/edit, roles: ROLE_ADMIN}

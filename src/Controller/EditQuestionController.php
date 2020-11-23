@@ -1,11 +1,9 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Controller;
 
-use App\Entity\Answer;
-use App\Form\AnswerCountFormType;
-use App\Form\CreateQuestionFormType;
-use App\Entity\Question;
 use App\Form\EditQuestionFormType;
 use App\Repository\QuestionRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;

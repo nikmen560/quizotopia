@@ -47,14 +47,6 @@
                             </div>
                             <div class="card-body card-body-cascade text-center">
 
-                                <p class="card-text">
-                                <ul>
-{#                                    {% for quizQuestion in quizQuestions %}#}
-{#                                        <li>{{ quizQuestion.question.id }}</li>#}
-{#                                    {% endfor %}#}
-
-                                </ul>
-                                </p>
                                 {% if quiz.status %}
                                     <a class="btn btn-outline-warning" value="{{ quiz.id }}"
                                        href="{{ path('block_quiz', {'id': quiz.id}) }}">{% trans %}Block{% endtrans %}</a>

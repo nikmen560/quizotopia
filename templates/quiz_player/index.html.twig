@@ -19,12 +19,12 @@
             <div class="card" >
                 <div class="card-body">
                     <h5 class="card-title"></h5>
-                    <p class="card-text">{{ qq.question.content }}</p>
+                    <p class="card-text">{{ nextQuestion.question.content }}</p>
                 </div>
                 <ul class="list-group list-group-flush">
                     {% for answer in answers %}
                         <a class="list-group-item list-group-item-action"
-                           href="{{ path('quiz_check',{"id":qq.id, "quizId":quizId, "answerId":answer.id}) }}">{{ answer.content }}</a>
+                           href="{{ path('quiz_check',{"id":nextQuestion.id, "quizId":quizId, "answerId":answer.id}) }}">{{ answer.content }}</a>
                     {% endfor %}
                 </ul>
             </div>

@@ -31,7 +31,7 @@ class AdminQuestionsController extends AbstractController
      * @Route("/admin/questions/delete_question/{id}", name="delete_question")
      * @param $id
      */
-    public function deleteUser($id)
+    public function deleteUser(int $id)
     {
         $em = $this->getDoctrine()->getManager();
         $usr= $em->getRepository(Question::class)->find($id);

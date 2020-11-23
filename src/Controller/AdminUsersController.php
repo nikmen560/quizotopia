@@ -29,7 +29,7 @@ class AdminUsersController extends AbstractController
      * @Route("/admin/users/delete_user/{id}", name="delete_user")
      * @param $id
      */
-    public function deleteUser($id)
+    public function deleteUser(int $id)
     {
         $em = $this->getDoctrine()->getManager();
         $usr= $em->getRepository(User::class)->find($id);
